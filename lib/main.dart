@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       // 路由
       initialRoute: RouteNames.systemSplash,
       getPages: RoutePages.list,
+      navigatorObservers: [RoutePages.observer],
     );
   }
 }
