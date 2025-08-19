@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:woo_shopping_flutter/common/index.dart';
 
 import '../../../common/routers/names.dart';
 import 'index.dart';
@@ -21,7 +22,7 @@ class SplashPage extends GetView<SplashController> {
             );
           },
         ),
-
+        Text(ConfigService.to.version),
         // 按钮
         ElevatedButton(
           onPressed: () {
