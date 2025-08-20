@@ -12,13 +12,14 @@ class Global {
     // "ServicesBinding.defaultBinaryMessenger was accessed before the binding was initialized"
     WidgetsFlutterBinding.ensureInitialized();
 
+    // 初始化存储
+    await Storage().init();
+
     // 初始化队列
     await Future.wait([
       // 配置服务
       Get.putAsync<ConfigService>(() async => await ConfigService().init()),
     ]).whenComplete(() {});
-
-    await Storage().init();
   }
 }
 
