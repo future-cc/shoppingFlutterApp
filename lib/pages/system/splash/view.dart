@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woo_shopping_flutter/common/index.dart';
 
-import '../../../common/routers/names.dart';
 import 'index.dart';
 
 class SplashPage extends GetView<SplashController> {
@@ -30,10 +29,18 @@ class SplashPage extends GetView<SplashController> {
           },
           child: const Text("立刻点击"),
         ),
-        
-        ElevatedButton(onPressed: () {
-          Get.toNamed(RouteNames.systemLogin);
-        }, child: const Text("跳转 login"))
+
+        ElevatedButton(
+            onPressed: () {
+              Get.toNamed(RouteNames.systemLogin);
+            },
+            child: const Text("跳转 login")),
+
+        ElevatedButton(
+            onPressed: () {
+              Get.toNamed(RouteNames.stylesStylesIndex);
+            },
+            child: const Text("跳转 style"))
       ],
     );
   }

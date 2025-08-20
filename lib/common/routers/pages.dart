@@ -24,5 +24,9 @@ class RoutePages {
       name: RouteNames.systemSplash,
       page: () => const SplashPage(),
     ),
+    GetPage(
+      name: RouteNames.stylesStylesIndex,
+      page: () => const StylesIndexPage(),
+    ),
   ];
 }
