@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:woo_shopping_flutter/common/services/wp_http.dart';
 
 import 'common/index.dart';
 
@@ -14,12 +15,11 @@ class Global {
 
     // 初始化存储
     await Storage().init();
+    
+    Get.put(ConfigService()); //初始化
+    Get.put(WPHttpService()); //初始化dio
 
-    // 初始化队列
-    await Future.wait([
-      // 配置服务
-      Get.putAsync<ConfigService>(() async => await ConfigService().init()),
-    ]).whenComplete(() {});
+    await ConfigService().init();
   }
 }
 
