@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:woo_shopping_flutter/common/index.dart';
@@ -18,11 +19,15 @@ class ConfigService extends GetxService {
   // 版本号
   String get version => _platform?.version ?? '-';
 
+  // 主题
+  AdaptiveThemeMode themeMode = AdaptiveThemeMode.light;
+
+
   // 初始化 包信息
   Future<ConfigService> init() async {
-    await getPlatform();
-    //多语言初始化
-    initLocale();
+    await getPlatform(); //获取平台信息
+    await initTheme();  // 初始化主题色
+    initLocale(); //多语言初始化
     return this;
   }
 
@@ -42,6 +47,27 @@ class ConfigService extends GetxService {
     locale = value;
     Get.updateLocale(value);
     Storage().setString(Constants.storageLanguageCode, value.languageCode);
+  }
+
+  // 初始 theme
+  Future<void> initTheme() async {
+    final savedThemeMode = await AdaptiveTheme.getThemeMode();
+    themeMode = savedThemeMode ?? AdaptiveThemeMode.light;
+  }
+
+  // 切换 theme
+  Future<void> setThemeMode(String themeKey) async {
+    switch (themeKey) {
+      case "light":
+        AdaptiveTheme.of(Get.context!).setLight();
+        break;
+      case "dark":
+        AdaptiveTheme.of(Get.context!).setDark();
+        break;
+      case "system":
+        AdaptiveTheme.of(Get.context!).setSystem();
+        break;
+    }
   }
 
 
