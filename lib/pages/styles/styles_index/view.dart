@@ -9,54 +9,143 @@ class StylesIndexPage extends GetView<StylesIndexController> {
   const StylesIndexPage({super.key});
 
   // 主视图
-  Widget _buildView() {
+  Widget _buildView(BuildContext context) {
 
+    //按钮组件
     return <Widget>[
+      // primary
+      ButtonWidget.primary(
+        "四角尖",
+        borderRadius: 0,
+        elevation: 0,
+        onTap: () {},
+        width: 200,
+      ),
+
+      // primary
+      ButtonWidget.primary("primary", onTap: () {}),
+
+      // secondary
+      ButtonWidget.secondary("secondary", onTap: () {}),
+
+      // destructive
+      ButtonWidget.destructive("destructive", onTap: () {}),
+
+      // outline
+      ButtonWidget.outline("outline", onTap: () {}),
+
+      // ghost
+      ButtonWidget.ghost("ghost", onTap: () {}),
+
+      // link
+      ButtonWidget.link("link", onTap: () {}),
+
+      // enabled
+      const ButtonWidget.primary("enabled = false"),
+
+      // width 200
+      ButtonWidget.primary(
+        "width = 200",
+        onTap: () {},
+        width: 200,
+      ),
+
+      // primary
+      ButtonWidget.primary("primary",
+          icon: Icon(
+            Icons.home,
+            color: context.colors.scheme.onPrimary,
+          ),
+          onTap: () {}),
+
+      // primary.sm
+      ButtonWidget.primary(
+        "primary.small",
+        scale: WidgetScale.small,
+        onTap: () {},
+      ),
+
+      // primary.lg
+      ButtonWidget.primary(
+        "primary.large",
+        scale: WidgetScale.large,
+        onTap: () {},
+      ),
+
+      // primary.loading
+      ButtonWidget.primary(
+        "primary.loading",
+        loading: true,
+        onTap: () {},
+      ),
+
+      // destructive.loading
+      ButtonWidget.destructive(
+        "destructive.loading",
+        loading: true,
+        onTap: () {},
+      ),
+
       // icon
-      const TextWidget.label("icon + badge dot"),
-      const IconWidget.icon(
-        Icons.login,
-        size: 24,
-        isDot: true,
-      ).paddingBottom(20),
-
-      // svg
-      const TextWidget.label("svg + badge 99"),
-      const IconWidget.svg(
-        AssetsSvgs.cBagSvg,
-        size: 24,
-        badgeString: "99+",
-      ).paddingBottom(20),
-
-      // png
-      const TextWidget.label("png + 文字 + 左右"),
-      const IconWidget.img(
-        AssetsImages.pVisaPng,
-        text: "命令调试",
-        size: 24,
-      ).paddingBottom(20),
-
-      // png
-      const TextWidget.label("png + 文字 + 多行"),
-      const IconWidget.img(
-        AssetsImages.pVisaPng,
-        text:
-        "命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试",
-        size: 24,
-        isExpanded: true,
-      ).width(200).paddingBottom(20),
-
-      // png
-      const TextWidget.label("svg + 文字 + 上下"),
-      const IconWidget.svg(
-        AssetsSvgs.cBagSvg,
-        text: "计算器",
-        size: 24,
-        isVertical: true,
-      ).paddingBottom(20),
+      ButtonWidget.icon(
+          Icon(
+            Icons.home,
+            color: context.colors.primary,
+          ),
+          onTap: () {}),
 
       //
     ].toColumnSpace().center().scrollable();
+
+    //带文字的图片
+    // return <Widget>[
+    //   // icon
+    //   const TextWidget.label("icon + badge dot"),
+    //   const IconWidget.icon(
+    //     Icons.login,
+    //     size: 24,
+    //     isDot: true,
+    //   ).paddingBottom(20),
+    //
+    //   // svg
+    //   const TextWidget.label("svg + badge 99"),
+    //   const IconWidget.svg(
+    //     AssetsSvgs.cBagSvg,
+    //     size: 24,
+    //     badgeString: "99+",
+    //   ).paddingBottom(20),
+    //
+    //   // png
+    //   const TextWidget.label("png + 文字 + 左右"),
+    //   const IconWidget.img(
+    //     AssetsImages.pVisaPng,
+    //     text: "命令调试",
+    //     size: 24,
+    //   ).paddingBottom(20),
+    //
+    //   // png
+    //   const TextWidget.label("png + 文字 + 多行"),
+    //   const IconWidget.img(
+    //     AssetsImages.pVisaPng,
+    //     text:
+    //     "命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试命令调试",
+    //     size: 24,
+    //     isExpanded: true,
+    //   ).width(200).paddingBottom(20),
+    //
+    //   // png
+    //   const TextWidget.label("svg + 文字 + 上下"),
+    //   const IconWidget.svg(
+    //     AssetsSvgs.cBagSvg,
+    //     text: "计算器",
+    //     size: 24,
+    //     isVertical: true,
+    //   ).paddingBottom(20),
+    //
+    //   //
+    // ].toColumnSpace().center().scrollable();
+
+    //文字相关
     // return <Widget>[
     //   // H1
     //   const TextWidget.h1(
@@ -176,7 +265,7 @@ class StylesIndexPage extends GetView<StylesIndexController> {
         return Scaffold(
           appBar: AppBar(title: const Text("styles_index")),
           body: SafeArea(
-            child: _buildView(),
+            child: _buildView(context),
           ),
         );
       },
