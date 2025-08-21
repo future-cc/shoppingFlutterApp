@@ -1,4 +1,5 @@
 class RouteNames {
+  static const stylesImage = '/styles_image';
   static const systemLogin = '/system_login';
   static const systemSplash = '/system_splash';
   static const systemMain = '/system_main';

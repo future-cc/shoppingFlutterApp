@@ -13,6 +13,10 @@ class RoutePages {
   // 列表
   static List<GetPage> list = [
     GetPage(
+      name: RouteNames.stylesImage,
+      page: () => const ImagePage(),
+    ),
+    GetPage(
       name: RouteNames.systemLogin,
       page: () => const LoginPage(),
     ),

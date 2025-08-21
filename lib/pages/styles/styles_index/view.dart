@@ -91,6 +91,7 @@ class StylesIndexPage extends GetView<StylesIndexController> {
         .toColumnSpace(crossAxisAlignment: CrossAxisAlignment.start)
         .paddingHorizontal(AppSpace.page)
         .scrollable();
+    //主题色相关
     // return Column(
     //   children: [
     //     ListTile(
