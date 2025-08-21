@@ -46,7 +46,13 @@ class SplashPage extends GetView<SplashController> {
             onPressed: () {
               Get.toNamed(RouteNames.stylesImage);
             },
-            child: const Text("跳转 imageview"))
+            child: const Text("跳转 imageview")),
+
+        ElevatedButton(
+            onPressed: () {
+              Get.toNamed(RouteNames.stylesInput);
+            },
+            child: const Text("跳转 Input"))
       ],
     );
   }

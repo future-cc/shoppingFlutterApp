@@ -32,5 +32,9 @@ class RoutePages {
       name: RouteNames.stylesStylesIndex,
       page: () => const StylesIndexPage(),
     ),
+    GetPage(
+      name: RouteNames.stylesInput,
+      page: () => const InputPage(),
+    ),
   ];
 }

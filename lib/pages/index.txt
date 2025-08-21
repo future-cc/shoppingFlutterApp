@@ -1,6 +1,6 @@
 export 'styles/image/index.dart';
+export 'styles/input/index.dart';
 export 'styles/styles_index/index.dart';
 export 'system/login/index.dart';
 export 'system/main/index.dart';
 export 'system/splash/index.dart';
-export 'image/index.dart';

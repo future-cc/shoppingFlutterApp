@@ -9,6 +9,3 @@ export 'style/index.dart';
 export 'utils/index.dart';
 export 'values/index.dart';
 export 'widgets/index.dart';
-export 'widgets/icon.dart';
-export 'widgets/button.dart';
-
