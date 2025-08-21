@@ -1,3 +1,4 @@
+import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woo_shopping_flutter/common/index.dart';
@@ -9,30 +10,113 @@ class StylesIndexPage extends GetView<StylesIndexController> {
 
   // 主视图
   Widget _buildView() {
-    return Column(
-      children: [
-        ListTile(
-          title: Text(
-            "语言 : ${ConfigService.to.locale.toLanguageTag()}",
-          ),
-          onTap: controller.onLanguageSelected,
-        ),
+    return <Widget>[
+      // H1
+      const TextWidget.h1(
+        "H1.large",
+        scale: WidgetScale.large,
+      ),
+      const TextWidget.h1("H1.medium"),
+      const TextWidget.h1(
+        "H1.small",
+        scale: WidgetScale.small,
+      ),
 
-        // 主题
-        ListTile(
-          onTap: () => controller.onThemeSelected("light"),
-          title: Text("亮色 : ${ConfigService.to.themeMode}"),
-        ),
-        ListTile(
-          onTap: () => controller.onThemeSelected("dark"),
-          title: Text("暗色 : ${ConfigService.to.themeMode}"),
-        ),
-        ListTile(
-          onTap: () => controller.onThemeSelected("system"),
-          title: Text("系统 : ${ConfigService.to.themeMode}"),
-        ),
-      ],
-    );
+      // H2
+      const TextWidget.h2(
+        "H2.large",
+        scale: WidgetScale.large,
+      ),
+      const TextWidget.h2("H2.medium"),
+      const TextWidget.h2(
+        "H2.small",
+        scale: WidgetScale.small,
+      ),
+
+      // H3
+      const TextWidget.h3(
+        "H3.large",
+        scale: WidgetScale.large,
+      ),
+      const TextWidget.h3("H3.medium"),
+      const TextWidget.h3(
+        "H3.small",
+        scale: WidgetScale.small,
+      ),
+
+      // H4
+      const TextWidget.h4(
+        "H4.large",
+        scale: WidgetScale.large,
+      ),
+      const TextWidget.h4("H4.medium"),
+      const TextWidget.h4(
+        "H4.small",
+        scale: WidgetScale.small,
+      ),
+
+      // Body
+      const TextWidget.body(
+        "Body.large",
+        scale: WidgetScale.large,
+      ),
+      const TextWidget.body("Body.medium"),
+      const TextWidget.body(
+        "Body.small",
+        scale: WidgetScale.small,
+      ),
+
+      // Label
+      const TextWidget.label(
+        "Label.large",
+        scale: WidgetScale.large,
+      ),
+      const TextWidget.label("Label.medium"),
+      const TextWidget.label(
+        "Label.small",
+        scale: WidgetScale.small,
+      ),
+
+      // muted
+      const TextWidget.muted(
+        "Muted.large",
+        scale: WidgetScale.large,
+      ),
+      const TextWidget.muted("Muted.medium"),
+      const TextWidget.muted(
+        "Muted.small",
+        scale: WidgetScale.small,
+      ),
+    ]
+        .toColumnSpace(crossAxisAlignment: CrossAxisAlignment.start)
+        .paddingHorizontal(AppSpace.page)
+        .scrollable();
+    // return Column(
+    //   children: [
+    //     ListTile(
+    //       title: Text(
+    //         "语言 : ${ConfigService.to.locale.toLanguageTag()}",
+    //       ),
+    //       onTap: controller.onLanguageSelected,
+    //     ),
+    //
+    //     // 主题
+    //     ListTile(
+    //       onTap: () => controller.onThemeSelected("light"),
+    //       title: Text("亮色 : ${ConfigService.to.themeMode}"),
+    //     ),
+    //     ListTile(
+    //       onTap: () => controller.onThemeSelected("dark"),
+    //       title: Text("暗色 : ${ConfigService.to.themeMode}"),
+    //     ),
+    //     ListTile(
+    //       onTap: () => controller.onThemeSelected("system"),
+    //       title: Text("系统 : ${ConfigService.to.themeMode}"),
+    //     ),
+    //
+    //     //文字
+    //   ],
+    // );
   }
 
   @override
