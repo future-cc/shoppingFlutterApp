@@ -11,10 +11,10 @@ class SplashController extends GetxController {
     update(["splash"]);
   }
 
-  void onTap(int ticket) {
-    title = "GetBuilder -> 点击了第 $ticket 个按钮";
-    update(['splash_title']);
-  }
+  // void onTap(int ticket) {
+  //   title = "GetBuilder -> 点击了第 $ticket 个按钮";
+  //   update(['splash_title']);
+  // }
 
   // @override
   // void onInit() {
@@ -24,10 +24,11 @@ class SplashController extends GetxController {
   _jumpToPage() {
     // 欢迎页
     Future.delayed(const Duration(seconds: 1), () {
-      Get.offAllNamed(RouteNames.systemWelcome);
+      ConfigService.to.isAlreadyOpen
+          ? Get.offAllNamed(RouteNames.systemMain)
+          : Get.offAllNamed(RouteNames.systemWelcome);
     });
   }
-
 
   @override
   void onReady() {
@@ -36,8 +37,8 @@ class SplashController extends GetxController {
     _jumpToPage();
   }
 
-  // @override
-  // void onClose() {
-  //   super.onClose();
-  // }
+// @override
+// void onClose() {
+//   super.onClose();
+// }
 }

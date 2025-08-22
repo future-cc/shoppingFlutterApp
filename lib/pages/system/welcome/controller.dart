@@ -70,6 +70,8 @@ class WelcomeController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    //已经打开过欢迎页了
+    ConfigService.to.setAlreadyOpen();
     _initData();
   }
 

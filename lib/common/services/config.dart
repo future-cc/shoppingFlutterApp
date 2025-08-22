@@ -22,6 +22,8 @@ class ConfigService extends GetxService {
   // 主题
   AdaptiveThemeMode themeMode = AdaptiveThemeMode.light;
 
+  // 是否首次打开
+  bool get isAlreadyOpen => Storage().getBool(Constants.storageAlreadyOpen);
 
   // 初始化 包信息
   Future<ConfigService> init() async {
@@ -68,6 +70,11 @@ class ConfigService extends GetxService {
         AdaptiveTheme.of(Get.context!).setSystem();
         break;
     }
+  }
+
+  // 标记已打开app
+  void setAlreadyOpen() {
+    Storage().setBool(Constants.storageAlreadyOpen, true);
   }
 
 
