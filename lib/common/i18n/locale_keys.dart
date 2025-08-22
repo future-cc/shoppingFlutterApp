@@ -44,6 +44,13 @@ class LocaleKeys {
   static const registerHaveAccount = 'register_have_account';
 
 
+  // 验证提示
+  static const validatorRequired = 'validator_required';
+  static const validatorEmail = 'validator_email';
+  static const validatorMin = 'validator_min';
+  static const validatorMax = 'validator_max';
+  static const validatorPassword = 'validator_password';
+
 
 }
 
