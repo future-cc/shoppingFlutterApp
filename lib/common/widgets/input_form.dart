@@ -29,6 +29,7 @@ class InputFormFieldWidget extends FormField<String> {
       return null;
     },
     builder: (field) {
+      // 这里定义了一个局部函数（闭包）
       void onChangedHandler(String value) {
         field.didChange(value);
         onChanged?.call(value);
@@ -48,6 +49,7 @@ class InputFormFieldWidget extends FormField<String> {
           controller: controller,
           obscureText: obscureText ?? false,
           cleanable: cleanable ?? true,
+          // 把这个局部函数当成参数，传给 InputWidget
           onChanged: onChangedHandler,
         ),
 
