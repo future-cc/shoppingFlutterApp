@@ -4,4 +4,4 @@ export 'styles/styles_index/index.dart';
 export 'styles/image/index.dart';
 export 'styles/input/index.dart';
 export 'system/welcome/index.dart';
-
+export 'system/main/index.dart';

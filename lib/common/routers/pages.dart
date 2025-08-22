@@ -40,5 +40,9 @@ class RoutePages {
       name: RouteNames.systemWelcome,
       page: () => const WelcomePage(),
     ),
+    GetPage(
+      name: RouteNames.systemMain,
+      page: () => const MainPage(),
+    ),
   ];
 }
