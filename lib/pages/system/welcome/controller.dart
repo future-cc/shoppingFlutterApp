@@ -4,6 +4,9 @@ import '../../../common/index.dart';
 
 class WelcomeController extends GetxController {
   WelcomeController();
+  /// 当前位置
+  int currentIndex = 0;
+
 
   List<WelcomeModel>? items;
 
@@ -27,7 +30,14 @@ class WelcomeController extends GetxController {
       ),
     ];
 
-    update(["slider"]);
+    update(["slider", 'bar']);
+  }
+
+
+  /// 当前位置发生改变
+  void onPageChanged(int index) {
+    currentIndex = index;
+    update(['bar']);
   }
 
 
