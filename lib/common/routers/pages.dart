@@ -44,5 +44,9 @@ class RoutePages {
       name: RouteNames.systemMain,
       page: () => const MainPage(),
     ),
+    GetPage(
+      name: RouteNames.stylesTextForm,
+      page: () => const TextFormPage(),
+    ),
   ];
 }

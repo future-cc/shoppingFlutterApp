@@ -13,6 +13,12 @@ class StylesIndexPage extends GetView<StylesIndexController> {
 
     //按钮组件
     return <Widget>[
+      // form 表单
+      ListTile(
+        onTap: () => Get.toNamed(RouteNames.stylesTextForm),
+        title: const Text("form 表单"),
+      ),
+
       // primary
       ButtonWidget.primary(
         "四角尖",

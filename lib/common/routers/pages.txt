@@ -12,6 +12,10 @@
         page: () => const StylesIndexPage(),
       ),
       GetPage(
+        name: RouteNames.stylesTextForm,
+        page: () => const TextFormPage(),
+      ),
+      GetPage(
         name: RouteNames.systemLogin,
         page: () => const LoginPage(),
       ),
