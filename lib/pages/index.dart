@@ -6,3 +6,4 @@ export 'styles/input/index.dart';
 export 'system/welcome/index.dart';
 export 'system/main/index.dart';
 export 'styles/text_form/index.dart';
+export 'system/register/index.dart';
