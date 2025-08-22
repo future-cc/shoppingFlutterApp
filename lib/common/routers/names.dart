@@ -5,4 +5,5 @@ class RouteNames {
   static const systemMain = '/system_main';
   static const stylesStylesIndex = '/styles_styles_index';
   static const stylesInput = '/styles_input';
+  static const systemWelcome = '/system_welcome';
 }

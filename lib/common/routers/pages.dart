@@ -36,5 +36,9 @@ class RoutePages {
       name: RouteNames.stylesInput,
       page: () => const InputPage(),
     ),
+    GetPage(
+      name: RouteNames.systemWelcome,
+      page: () => const WelcomePage(),
+    ),
   ];
 }

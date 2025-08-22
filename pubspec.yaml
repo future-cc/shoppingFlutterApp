@@ -25,6 +25,7 @@ dependencies:
   ducafe_ui_core: ^1.0.6
   cached_network_image: ^3.4.1
   flutter_svg: ^2.2.0
+  carousel_slider: ^5.1.1
 
 dev_dependencies:
   flutter_test:
