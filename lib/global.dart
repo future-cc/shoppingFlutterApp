@@ -15,7 +15,8 @@ class Global {
 
     // 初始化存储
     await Storage().init();
-    
+    Loading(); //初始化loading
+
     Get.put(ConfigService()); //初始化
     Get.put(WPHttpService()); //初始化dio
 

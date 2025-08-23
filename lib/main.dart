@@ -1,6 +1,7 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:woo_shopping_flutter/common/index.dart';
 
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
                     // 默认语言种类
                     // builder
                     builder: (context, widget) {
-                      // widget = EasyLoading.init()(context, widget); // EasyLoading 初始化
+                      widget = EasyLoading.init()(context, widget); // EasyLoading 初始化
                       // 不随系统字体缩放比例
                       return MediaQuery(
                         //获取当前设备的屏幕信息（分辨率、padding、缩放比例等）。
