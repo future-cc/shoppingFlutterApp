@@ -7,6 +7,10 @@ class PinPutWidget extends StatelessWidget {
   /// 提交事件
   final Function(String)? onSubmit;
 
+  // FocusScope.of(context).requestFocus(focusNode) → 把焦点移动到指定输入框。
+  // FocusScope.of(context).nextFocus() → 跳到下一个可聚焦的输入框。
+  // FocusScope.of(context).previousFocus() → 回到上一个输入框。
+  // FocusScope.of(context).unfocus() → 取消焦点（收起键盘）。
   /// 焦点
   final FocusNode? focusNode;
 
