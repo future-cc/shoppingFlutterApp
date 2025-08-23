@@ -7,3 +7,4 @@ export 'system/welcome/index.dart';
 export 'system/main/index.dart';
 export 'styles/text_form/index.dart';
 export 'system/register/index.dart';
+export 'system/register_pin/index.dart';

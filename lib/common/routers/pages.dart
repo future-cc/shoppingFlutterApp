@@ -52,5 +52,9 @@ class RoutePages {
       name: RouteNames.systemRegister,
       page: () => const RegisterPage(),
     ),
+    GetPage(
+      name: RouteNames.systemRegisterPin,
+      page: () => const RegisterPinPage(),
+    ),
   ];
 }

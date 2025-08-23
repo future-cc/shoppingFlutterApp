@@ -8,4 +8,5 @@ class RouteNames {
   static const systemWelcome = '/system_welcome';
   static const stylesTextForm = '/styles_text_form';
   static const systemRegister = '/system_register';
+  static const systemRegisterPin = '/system_register_pin';
 }
