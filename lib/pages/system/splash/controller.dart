@@ -7,34 +7,18 @@ class SplashController extends GetxController {
 
   String title = "";
 
-  _initData() {
-    update(["splash"]);
-  }
-
-  // void onTap(int ticket) {
-  //   title = "GetBuilder -> 点击了第 $ticket 个按钮";
-  //   update(['splash_title']);
-  // }
-
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
-
   _jumpToPage() {
     // 欢迎页
     Future.delayed(const Duration(seconds: 1), () {
-      Get.offAllNamed(RouteNames.systemRegister);
-      // ConfigService.to.isAlreadyOpen
-      //     ? Get.offAllNamed(RouteNames.systemMain)
-      //     : Get.offAllNamed(RouteNames.systemWelcome);
+      ConfigService.to.isAlreadyOpen
+          ? Get.offAllNamed(RouteNames.systemMain)
+          : Get.offAllNamed(RouteNames.systemWelcome);
     });
   }
 
   @override
   void onReady() {
     super.onReady();
-    // _initData();
     _jumpToPage();
   }
 
