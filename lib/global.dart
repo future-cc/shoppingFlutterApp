@@ -19,6 +19,7 @@ class Global {
 
     Get.put(ConfigService()); //初始化
     Get.put(WPHttpService()); //初始化dio
+    Get.put<UserService>(UserService()); // 用户
 
     await ConfigService().init();
   }

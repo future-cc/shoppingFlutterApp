@@ -24,17 +24,28 @@ class LoginController extends GetxController {
     super.onInit();
   }
 
-  /// Sign In 登入
+  /// Sign In
   Future<void> onSignIn() async {
     if ((formKey.currentState as FormState).validate()) {
       try {
         Loading.show();
+
+        // aes 加密密码
+        var password = EncryptUtil().aesEncode(passwordController.text);
+
+        // api 请求
+        await UserApi.login(UserLoginReq(
+          username: userNameController.text,
+          password: password,
+        ));
+        Loading.success();
         Get.back(result: true);
       } finally {
         Loading.dismiss();
       }
     }
   }
+
 
   /// Sign Up 注册
   void onSignUp() {
