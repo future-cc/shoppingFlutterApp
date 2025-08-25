@@ -1,3 +1,12 @@
+static const cartCartIndex = '/cart_cart_index';
+static const cart = '/cart';
+static const goodsHome = '/goods_home';
+static const goods = '/goods';
+static const goodsProductDetails = '/goods_product_details';
+static const msg = '/msg';
+static const msgMsgIndex = '/msg_msg_index';
+static const my = '/my';
+static const myMyIndex = '/my_my_index';
 static const stylesImage = '/styles_image';
 static const stylesInput = '/styles_input';
 static const stylesStylesIndex = '/styles_styles_index';

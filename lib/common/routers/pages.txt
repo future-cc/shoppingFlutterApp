@@ -1,5 +1,41 @@
 
       GetPage(
+        name: RouteNames.cartCartIndex,
+        page: () => const CartIndexPage(),
+      ),
+      GetPage(
+        name: RouteNames.cart,
+        page: () => const CartPage(),
+      ),
+      GetPage(
+        name: RouteNames.goodsHome,
+        page: () => const HomePage(),
+      ),
+      GetPage(
+        name: RouteNames.goods,
+        page: () => const GoodsPage(),
+      ),
+      GetPage(
+        name: RouteNames.goodsProductDetails,
+        page: () => const ProductDetailsPage(),
+      ),
+      GetPage(
+        name: RouteNames.msg,
+        page: () => const MsgPage(),
+      ),
+      GetPage(
+        name: RouteNames.msgMsgIndex,
+        page: () => const MsgIndexPage(),
+      ),
+      GetPage(
+        name: RouteNames.my,
+        page: () => const MyPage(),
+      ),
+      GetPage(
+        name: RouteNames.myMyIndex,
+        page: () => const MyIndexPage(),
+      ),
+      GetPage(
         name: RouteNames.stylesImage,
         page: () => const ImagePage(),
       ),

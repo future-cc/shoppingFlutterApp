@@ -43,6 +43,13 @@ class ImageWidget extends StatefulWidget {
   /// 高度
   final double? height;
 
+  // 图片 BoxFit
+  // fill → 拉伸填满
+  // contain → 完整显示
+  // cover → 覆盖裁剪
+  // fitWidth / fitHeight → 单向撑满
+  // none → 原始大小
+  // scaleDown → 缩小到适应
   /// 自适应方式
   final BoxFit? fit;
 

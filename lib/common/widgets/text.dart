@@ -61,6 +61,10 @@ class TextWidget extends StatelessWidget {
   /// 自动换行
   final bool? softWrap;
 
+  // clip	裁剪文字，不显示多余部分
+  // ellipsis	用省略号表示超出部分
+  // fade	超出部分渐隐
+  // visible	超出部分可见，不裁剪
   /// 溢出
   final TextOverflow? overflow;
 

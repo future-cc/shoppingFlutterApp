@@ -58,5 +58,9 @@ class RoutePages {
       name: RouteNames.systemRegisterPin,
       page: () => const RegisterPinPage(),
     ),
+    GetPage(
+      name: RouteNames.goodsProductDetails,
+      page: () => const ProductDetailsPage(),
+    ),
   ];
 }

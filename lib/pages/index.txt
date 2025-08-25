@@ -1,3 +1,12 @@
+export 'cart/cart_index/index.dart';
+export 'cart/index.dart';
+export 'goods/home/index.dart';
+export 'goods/index.dart';
+export 'goods/product_details/index.dart';
+export 'msg/index.dart';
+export 'msg/msg_index/index.dart';
+export 'my/index.dart';
+export 'my/my_index/index.dart';
 export 'styles/image/index.dart';
 export 'styles/input/index.dart';
 export 'styles/styles_index/index.dart';
