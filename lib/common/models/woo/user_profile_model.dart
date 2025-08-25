@@ -1,3 +1,5 @@
+import '../index.dart';
+
 class UserProfileModel {
   UserProfileModel({
     this.id,
@@ -87,104 +89,6 @@ class UserProfileModel {
     if (links != null) {
       map['_links'] = links?.toJson();
     }
-    return map;
-  }
-}
-
-class Links {
-  Links({
-    this.self,
-    this.collection,
-  });
-
-  Links.fromJson(dynamic json) {
-    if (json['self'] != null) {
-      self = [];
-      json['self'].forEach((v) {
-        self?.add(Self.fromJson(v));
-      });
-    }
-    if (json['collection'] != null) {
-      collection = [];
-      json['collection'].forEach((v) {
-        collection?.add(Collection.fromJson(v));
-      });
-    }
-  }
-
-  List<Self>? self;
-  List<Collection>? collection;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    if (self != null) {
-      map['self'] = self?.map((v) => v.toJson()).toList();
-    }
-    if (collection != null) {
-      map['collection'] = collection?.map((v) => v.toJson()).toList();
-    }
-    return map;
-  }
-}
-
-class Collection {
-  Collection({
-    this.href,
-  });
-
-  Collection.fromJson(dynamic json) {
-    href = json['href'];
-  }
-
-  String? href;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['href'] = href;
-    return map;
-  }
-}
-
-class Self {
-  Self({
-    this.href,
-  });
-
-  Self.fromJson(dynamic json) {
-    href = json['href'];
-  }
-
-  String? href;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['href'] = href;
-    return map;
-  }
-}
-
-class MetaData {
-  MetaData({
-    this.id,
-    this.key,
-    this.value,
-  });
-
-  MetaData.fromJson(dynamic json) {
-    id = json['id'];
-    key = json['key'];
-    value = json['value'];
-  }
-
-  int? id;
-  String? key;
-  String? value;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['key'] = key;
-    map['value'] = value;
     return map;
   }
 }
