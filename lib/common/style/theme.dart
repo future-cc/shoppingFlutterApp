@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 import 'colors.dart';
 
@@ -64,4 +66,63 @@ class AppTheme {
       fontFamily: "Montserrat", // 字体
     );
   }
+
+  /////////////////////////////////////////////////
+  /// 系统样式
+  /////////////////////////////////////////////////
+
+  /// 系统样式
+  static SystemUiOverlayStyle get systemStyle => const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, // 状态栏颜色
+    statusBarBrightness: Brightness.light, // 状态栏亮度
+    statusBarIconBrightness: Brightness.dark, // 状态栏图标亮度
+    systemNavigationBarDividerColor: Colors.transparent, // 系统导航栏分隔线颜色
+    systemNavigationBarColor: Colors.white, // 系统导航栏颜色
+    systemNavigationBarIconBrightness: Brightness.dark, // 系统导航栏图标亮度
+  );
+
+  /// 亮色系统样式
+  static SystemUiOverlayStyle get systemStyleLight => systemStyle.copyWith(
+    statusBarBrightness: Brightness.light, // 状态栏亮度
+    statusBarIconBrightness: Brightness.dark, // 状态栏图标亮度
+    systemNavigationBarIconBrightness: Brightness.dark, // 系统导航栏图标亮度
+  );
+
+  /// 暗色系统样式
+  static SystemUiOverlayStyle get systemStyleDark => systemStyle.copyWith(
+    statusBarBrightness: Brightness.dark, // 状态栏亮度
+    statusBarIconBrightness: Brightness.light, // 状态栏图标亮度
+    systemNavigationBarColor: const Color(0xFF0D0D0D), // 系统导航栏颜色
+    systemNavigationBarIconBrightness: Brightness.light, // 系统导航栏图标亮度
+  );
+
+  static void setSystemStyle() {
+    // 获取系统亮度
+    Brightness platformBrightness =
+        Get.context?.theme.brightness ?? Brightness.light;
+
+    // 获取当前模式
+    ThemeMode mode = Get.isDarkMode ? ThemeMode.dark : ThemeMode.light;
+
+    switch (mode) {
+      case ThemeMode.system:
+        if (platformBrightness == Brightness.dark) {
+          // 暗色模式
+          SystemChrome.setSystemUIOverlayStyle(systemStyleDark);
+        } else {
+          // 亮色模式
+          SystemChrome.setSystemUIOverlayStyle(systemStyleLight);
+        }
+        break;
+      case ThemeMode.light:
+      // 亮色模式
+        SystemChrome.setSystemUIOverlayStyle(systemStyleLight);
+        break;
+      case ThemeMode.dark:
+      // 暗色模式
+        SystemChrome.setSystemUIOverlayStyle(systemStyleDark);
+        break;
+    }
+  }
+  
 }

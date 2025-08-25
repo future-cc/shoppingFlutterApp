@@ -7,6 +7,14 @@ class SplashController extends GetxController {
 
   String title = "";
 
+  @override
+  void onInit() {
+    super.onInit();
+
+    // 设置系统样式
+    AppTheme.setSystemStyle();
+  }
+
   _jumpToPage() {
     // 欢迎页
     Future.delayed(const Duration(seconds: 1), () {
