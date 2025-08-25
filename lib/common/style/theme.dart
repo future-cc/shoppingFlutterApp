@@ -1,3 +1,4 @@
+import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -64,6 +65,32 @@ class AppTheme {
       useMaterial3: false,
       colorScheme: scheme,
       fontFamily: "Montserrat", // 字体
+
+      // 导航栏
+      appBarTheme: AppBarTheme(
+        // backgroundColor: scheme.surface, // 背景色
+        backgroundColor: Colors.transparent, // 背景色
+        scrolledUnderElevation: 0, // 滚动阴影
+        elevation: 0, // 阴影
+        centerTitle: true, // 标题居中
+        toolbarHeight: 56.w, // 高度
+        iconTheme: IconThemeData( //左侧/导航按钮样式
+          color: scheme.onSurface, // 图标颜色
+          size: 22.w, // 图标大小
+        ),
+        titleTextStyle: TextStyle(
+          color: scheme.onSurface, // 字体颜色
+          fontSize: 24.w, // 字体大小
+          fontWeight: FontWeight.w600, // 字体粗细
+          height: 1.2, // 行高
+        ),
+        toolbarTextStyle: TextStyle(
+          color: scheme.onSurface, // 字体颜色
+          fontSize: 22.w, // 字体大小
+          fontWeight: FontWeight.w600, // 字体粗细
+          height: 1.2, // 行高
+        ),
+      ),
     );
   }
 
