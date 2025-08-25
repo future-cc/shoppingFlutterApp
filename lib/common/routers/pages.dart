@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:woo_shopping_flutter/pages/index.dart';
 
 import 'package:get/get.dart';
+import 'package:woo_shopping_flutter/pages/system/main/binding.dart';
 import 'index.dart';
 
 class RoutePages {
@@ -43,6 +44,7 @@ class RoutePages {
     GetPage(
       name: RouteNames.systemMain,
       page: () => const MainPage(),
+      binding: MainBinding()
     ),
     GetPage(
       name: RouteNames.stylesTextForm,

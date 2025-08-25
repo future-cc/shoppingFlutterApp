@@ -8,3 +8,7 @@ export 'system/main/index.dart';
 export 'styles/text_form/index.dart';
 export 'system/register/index.dart';
 export 'system/register_pin/index.dart';
+export 'cart/index.dart';
+export 'goods/index.dart';
+export 'msg/index.dart';
+export 'my/index.dart';
