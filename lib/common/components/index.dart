@@ -6,3 +6,4 @@ export 'navigation.dart';
 export 'carousel.dart';
 export 'product_item.dart';
 export 'refresher.dart';
+export 'placehold.dart';

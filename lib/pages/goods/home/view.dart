@@ -13,7 +13,11 @@ class HomePage extends GetView<HomeController> {
 
   // 主视图
   Widget _buildView() {
-    return CustomScrollView(
+    return controller.flashShellProductList.isEmpty ||
+        controller.newProductProductList.isEmpty
+        ?
+    // 占位图
+    const PlaceholdWidget() : CustomScrollView(
       slivers: [
         // 轮播广告
         _buildBanner(),
@@ -29,12 +33,6 @@ class HomePage extends GetView<HomeController> {
 
         // list
         _buildFlashSell(),
-
-        // new product
-        // title
-        Text(LocaleKeys.gHomeNewProduct.tr)
-            .sliverToBoxAdapter()
-            .sliverPaddingHorizontal(AppSpace.page),
 
         // 最新商品
         // 栏位标题
