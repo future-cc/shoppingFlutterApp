@@ -1,9 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/index.dart';
 
-class ProductDetailsController extends GetxController {
+// GetSingleTickerProviderStateMixin 是 TickerProvider 的实现，
+// 当需要使用 Animation controller 时，需要在控制器初始化时传递一个 vsync 参数，此时需要用到 TickerProvider
+class ProductDetailsController extends GetxController with GetSingleTickerProviderStateMixin {
   ProductDetailsController();
+
+  // tab 控制器
+  late TabController tabController;
+  // tab 控制器
+  int tabIndex = 0;
+
 
   // 商品 id , 获取路由传递参数
   int? productId = Get.arguments['id'] ?? 0;
@@ -19,9 +28,20 @@ class ProductDetailsController extends GetxController {
 
   _initData() async {
     await _loadProduct();
+    // 初始化 tab 控制器
+    tabController = TabController(length: 3, vsync: this);
 
     update(["product_details"]);
   }
+
+  // 切换 tab
+  void onTapBarTap(int index) {
+    tabIndex = index;
+    tabController.animateTo(index);
+    update(["product_tab"]);
+  }
+
+
 
   // Banner 切换事件
   void onChangeBanner(int index, _reason) {
@@ -67,8 +87,10 @@ class ProductDetailsController extends GetxController {
     _initData();
   }
 
-// @override
-// void onClose() {
-//   super.onClose();
-// }
+  @override
+  void onClose() {
+    super.onClose();
+    tabController.dispose();
+  }
+
 }
