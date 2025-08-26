@@ -47,7 +47,7 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
             _buildBanner(context),
 
             // 商品标题
-            _buildTitle(),
+            _buildTitle(context),
 
             // Tab 栏位
             _buildTabBar(),
@@ -85,8 +85,42 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
   }
 
   // 商品标题
-  Widget _buildTitle() {
-    return const Text("滚动图");
+  Widget _buildTitle(BuildContext context) {
+    return <Widget>[
+      // 金额、打分、喜欢
+      <Widget>[
+        // 金额
+        TextWidget.h3(
+          "\$${controller.product?.price ?? 0}",
+        ).expanded(),
+        // 打分
+        IconWidget.icon(
+          Icons.star,
+          text: "4.5",
+          size: 20,
+          color: context.colors.scheme.primary,
+        ).paddingRight(AppSpace.iconTextMedium),
+        // 喜欢
+        IconWidget.icon(
+          Icons.favorite,
+          text: "100+",
+          size: 20,
+          color: context.colors.scheme.primary,
+        ),
+      ].toRow(),
+
+      // 次标题
+      TextWidget.label(
+        controller.product?.shortDescription?.clearHtml ?? "-",
+      ),
+    ]
+        .toColumn(
+          // 左对齐
+          crossAxisAlignment: CrossAxisAlignment.start,
+          // 垂直间距
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        )
+        .paddingAll(AppSpace.page);
   }
 
   // Tab 栏位
