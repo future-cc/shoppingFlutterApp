@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
                   // 自定义刷新头部
                   headerBuilder: () => const ClassicHeader(),
                   // 自定义刷新尾部
-                  footerBuilder: () => const SmartRefresherFooterWidget(),
+                  footerBuilder: () => const ClassicFooter(),
                   // 当列表不满一页时,是否隐藏刷新尾部
                   hideFooterWhenNotFull: true,
                   // 触发刷新的距离
