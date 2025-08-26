@@ -223,7 +223,7 @@ class HomePage extends GetView<HomeController> {
             enablePullUp: true, // 启用上拉加载
             onRefresh: controller.onRefresh, // 下拉刷新回调
             onLoading: controller.onLoading, // 上拉加载回调
-            footer: const SmartRefresherFooterWidget(), // 底部加载更多
+            // footer: const SmartRefresherFooterWidget(), // 底部加载更多
             child: _buildView(),
           ),
         );
