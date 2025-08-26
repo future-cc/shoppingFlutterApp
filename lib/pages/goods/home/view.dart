@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:woo_shopping_flutter/pages/goods/home/widgets/list_title.dart';
-
-import '../../../common/components/category_item.dart';
 import '../../../common/index.dart';
 import 'index.dart';
 
