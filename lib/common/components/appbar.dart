@@ -34,7 +34,7 @@ AppBar mainAppBarWidget({
             placeholder: hintText,
             readOnly: true,
           ).gestures(onTap: onTap)
-        : Text(titleString ?? ""),
+        : TextWidget.h3(titleString ?? ""),
     // 右侧按钮组
     actions: [
       // 搜索

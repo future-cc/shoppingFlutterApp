@@ -1,8 +1,6 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../common/components/appbar.dart';
 import '../../../common/index.dart';
 import 'index.dart';
 
@@ -110,11 +108,14 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
       tag: tag,
       builder: (_) {
         return Scaffold(
+          // 聊天界面：一般会设置 false，然后自己用 SafeArea + Padding 控制输入框，避免输入框抖动。
+          // 普通表单：保持 true，键盘弹出时自动顶起输入框。
+          //true: 键盘会把界面顶上去，保证输入框不会被挡住。
           resizeToAvoidBottomInset: false,
           // 导航
           appBar: mainAppBarWidget(
               titleString:
-              controller.product?.name ?? LocaleKeys.gDetailTitle.tr),
+                  controller.product?.name ?? LocaleKeys.gDetailTitle.tr),
           // 内容
           body: SafeArea(
             child: _buildView(context),
@@ -123,5 +124,4 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
       },
     );
   }
-
 }

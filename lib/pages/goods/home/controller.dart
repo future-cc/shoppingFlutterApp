@@ -44,7 +44,13 @@ class HomeController extends GetxController {
   void onAllTap(bool featured) {}
 
   // 分类点击事件
-  void onCategoryTap(int categoryId) {}
+  void onCategoryTap(int categoryId) {
+    Get.to(RouteNames.goodsCategory, arguments: {'id': categoryId});
+  }
+
+  // void onDetailTab(int? goodsId) {
+  //   Get.to(RouteNames.goodsCategory, arguments: {'id': goodsId});
+  // }
 
   _initData() async {
     // banner

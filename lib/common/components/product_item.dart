@@ -7,7 +7,7 @@ import '../index.dart';
 /// 商品展示项
 class ProductItemWidget extends StatelessWidget {
   /// 点击事件
-  final Function()? onTap;
+  final Function(int?)? onTap;
 
   /// 商品数据模型
   final ProductModel product;
@@ -66,7 +66,7 @@ class ProductItemWidget extends StatelessWidget {
         .paddingAll(2)
         .onTap(() {
       if (onTap != null) {
-        onTap?.call();
+        onTap?.call(product.id);
       } else {
         Get.toNamed(
           RouteNames.goodsProductDetails,

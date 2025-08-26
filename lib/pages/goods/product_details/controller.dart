@@ -17,7 +17,6 @@ class ProductDetailsController extends GetxController {
   // Banner 当前位置
   int bannerCurrentIndex = 0;
 
-
   _initData() async {
     await _loadProduct();
 
@@ -30,7 +29,6 @@ class ProductDetailsController extends GetxController {
     update(["product_banner"]); // 手动刷新 Banner
   }
 
-
   void onTap() {}
 
   // 拉取商品详情
@@ -42,13 +40,12 @@ class ProductDetailsController extends GetxController {
     if (product?.images != null) {
       bannerItems = product!.images!
           .map<KeyValueModel>((e) => KeyValueModel(
-        key: "${e.id}",
-        value: e.src ?? "",
-      ))
+                key: "${e.id}",
+                value: e.src ?? "",
+              ))
           .toList();
     }
   }
-
 
   // @override
   // void onInit() {
@@ -61,8 +58,8 @@ class ProductDetailsController extends GetxController {
     _initData();
   }
 
-  // @override
-  // void onClose() {
-  //   super.onClose();
-  // }
+// @override
+// void onClose() {
+//   super.onClose();
+// }
 }
