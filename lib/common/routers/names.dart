@@ -10,4 +10,5 @@ class RouteNames {
   static const systemRegister = '/system_register';
   static const systemRegisterPin = '/system_register_pin';
   static const goodsProductDetails = '/goods_product_details';
+  static const goodsCategory = '/goods_category';
 }

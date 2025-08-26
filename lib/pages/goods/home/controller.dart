@@ -185,15 +185,15 @@ class HomeController extends GetxController {
     _loadCacheData();
   }
 
-
   @override
   void onReady() {
     super.onReady();
     _initData();
   }
 
-// @override
-// void onClose() {
-//   super.onClose();
-// }
+  @override
+  void onClose() {
+    super.onClose();
+    refreshController.dispose();
+  }
 }

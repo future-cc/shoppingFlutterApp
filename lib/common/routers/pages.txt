@@ -8,6 +8,10 @@
         page: () => const CartPage(),
       ),
       GetPage(
+        name: RouteNames.goodsCategory,
+        page: () => const CategoryPage(),
+      ),
+      GetPage(
         name: RouteNames.goodsHome,
         page: () => const HomePage(),
       ),

@@ -1,5 +1,6 @@
 export 'cart/cart_index/index.dart';
 export 'cart/index.dart';
+export 'goods/category/index.dart';
 export 'goods/home/index.dart';
 export 'goods/index.dart';
 export 'goods/product_details/index.dart';

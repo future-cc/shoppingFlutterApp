@@ -62,5 +62,9 @@ class RoutePages {
       name: RouteNames.goodsProductDetails,
       page: () => const ProductDetailsPage(),
     ),
+    GetPage(
+      name: RouteNames.goodsCategory,
+      page: () => const CategoryPage(),
+    ),
   ];
 }
