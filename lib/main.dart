@@ -3,6 +3,7 @@ import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:woo_shopping_flutter/common/index.dart';
 
 import 'global.dart';
@@ -34,7 +35,20 @@ class MyApp extends StatelessWidget {
               debugShowFloatingThemeButton: true,
               // 显示主题按钮
               // 构建
-              builder: (theme, darkTheme) => GetMaterialApp(
+              builder: (theme, darkTheme) => RefreshConfiguration(
+                  // 自定义刷新头部
+                  headerBuilder: () => const ClassicHeader(),
+                  // 自定义刷新尾部
+                  footerBuilder: () => const ClassicFooter(),
+                  // 当列表不满一页时,是否隐藏刷新尾部
+                  hideFooterWhenNotFull: true,
+                  // 触发刷新的距离
+                  headerTriggerDistance: 80,
+                  // 最大的拖动距离
+                  maxOverScrollExtent: 100,
+                  // 触发加载的距离
+                  footerTriggerDistance: 150,
+                  child: GetMaterialApp(
                     title: 'Flutter Demo',
                     // 主题
                     theme: theme,
@@ -56,7 +70,8 @@ class MyApp extends StatelessWidget {
                     // 默认语言种类
                     // builder
                     builder: (context, widget) {
-                      widget = EasyLoading.init()(context, widget); // EasyLoading 初始化
+                      widget = EasyLoading.init()(
+                          context, widget); // EasyLoading 初始化
                       // 不随系统字体缩放比例
                       return MediaQuery(
                         //获取当前设备的屏幕信息（分辨率、padding、缩放比例等）。
@@ -67,7 +82,7 @@ class MyApp extends StatelessWidget {
                       );
                     },
                     debugShowCheckedModeBanner: false, //隐藏debug标志
-                  ));
+                  )));
         });
   }
 }
