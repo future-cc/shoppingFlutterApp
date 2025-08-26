@@ -9,3 +9,4 @@ export 'refresher.dart';
 export 'placehold.dart';
 export 'category_item.dart';
 export 'appbar.dart';
+export 'gallery.dart';
