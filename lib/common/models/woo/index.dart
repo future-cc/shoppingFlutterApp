@@ -6,3 +6,4 @@ export 'collection.dart';
 export 'meta_data.dart';
 export 'self.dart';
 export 'attribute_model.dart';
+export 'review_model/index.dart';
