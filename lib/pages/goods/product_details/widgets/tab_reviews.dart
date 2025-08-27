@@ -21,29 +21,39 @@ class TabReviewsView extends GetView<ProductDetailsController> {
       tag: tag,
       id: "product_reviews",
       builder: (_) {
-        return SmartRefresher(
-          // 刷新控制器
-          controller: controller.reviewsRefreshController,
-          // 启用上拉加载
-          enablePullUp: true,
-          // 下拉刷新回调
-          onRefresh: controller.onReviewsRefresh,
-          // 上拉加载回调
-          onLoading: controller.onReviewsLoading,
-          // 底部加载更多
-          footer: const SmartRefresherFooterWidget(),
-          // 分隔符、间距
-          child: ListView.separated(
-            itemBuilder: (BuildContext context, int index) {
-              var item = controller.reviews[index];
-              return _buildListItem(item);
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(height: AppSpace.listRow * 2);
-            },
-            itemCount: controller.reviews.length,
-          ).paddingVertical(AppSpace.page),
-        );
+        return ListView.separated(
+          itemBuilder: (BuildContext context, int index) {
+            var item = controller.reviews[index];
+            return _buildListItem(item);
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return SizedBox(height: AppSpace.listRow * 2);
+          },
+          itemCount: controller.reviews.length,
+        ).paddingVertical(AppSpace.page);
+        // return SmartRefresher(
+        //   // 刷新控制器
+        //   controller: controller.reviewsRefreshController,
+        //   // 启用上拉加载
+        //   enablePullUp: true,
+        //   // 下拉刷新回调
+        //   onRefresh: controller.onReviewsRefresh,
+        //   // 上拉加载回调
+        //   onLoading: controller.onReviewsLoading,
+        //   // 底部加载更多
+        //   footer: const SmartRefresherFooterWidget(),
+        //   // 分隔符、间距
+        //   child: ListView.separated(
+        //     itemBuilder: (BuildContext context, int index) {
+        //       var item = controller.reviews[index];
+        //       return _buildListItem(item);
+        //     },
+        //     separatorBuilder: (BuildContext context, int index) {
+        //       return SizedBox(height: AppSpace.listRow * 2);
+        //     },
+        //     itemCount: controller.reviews.length,
+        //   ).paddingVertical(AppSpace.page),
+        // );
       },
     );
   }
