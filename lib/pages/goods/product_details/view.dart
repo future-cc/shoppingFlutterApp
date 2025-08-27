@@ -1,6 +1,7 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:woo_shopping_flutter/common/widgets/ext/ui_widget_ext.dart';
 import '../../../common/index.dart';
 import 'index.dart';
 import 'widgets/index.dart';
@@ -19,9 +20,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
 
   // 5 定义 tag 值，唯一即可
   final String tag = '${Get.arguments['id'] ?? ''}${UniqueKey()}';
+
   // T get controller => GetInstance().find<T>(tag: tag)!;
   //主要是因为这个，所以导致多个相同类型的控制器 时，就必须通过 tag 来区分，否则 Get.find<T>() 会不知道你要找哪一个。
-
 
   @override
   Widget build(BuildContext context) {
@@ -46,19 +47,30 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
   Widget _buildView(BuildContext context) {
     return controller.product == null
         ? const PlaceholdWidget() // 占位图
-        : <Widget>[
+        : _buildTabView().nestedScrollView(headViews: [
             // 滚动图
-            _buildBanner(context),
+            _buildBanner(context).sliverToBoxAdapter(),
 
             // 商品标题
-            _buildTitle(context),
+            _buildTitle(context).sliverToBoxAdapter(),
 
             // Tab 栏位
-            _buildTabBar(context),
+            _buildTabBar(context).sliverToBoxAdapter(),
+          ]);
 
-            // TabView 视图
-            _buildTabView(),
-          ].toColumn();
+    // (<Widget>[
+    //   // 滚动图
+    //   _buildBanner(context),
+    //
+    //   // 商品标题
+    //   _buildTitle(context),
+    //
+    //   // Tab 栏位
+    //   _buildTabBar(context),
+    //
+    //   // TabView 视图
+    //   _buildTabView(),
+    // ].toColumn().scrollable());
   }
 
   // 滚动图
@@ -166,24 +178,22 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
 
   // TabView 视图
   Widget _buildTabView() {
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(20.w, 0.w, 20.w, 0.w),
-        child: TabBarView(
-          controller: controller.tabController,
-          children: [
-            // 规格
-            TabProductView(uniqueTag: uniqueTag),
-            // 详情
-            TabDetailView(uniqueTag: uniqueTag),
-            // 评论
-            TabReviewsView(uniqueTag: uniqueTag),
-          ],
-        ),
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20.w, 0.w, 20.w, 0.w),
+      child: TabBarView(
+        controller: controller.tabController,
+        children: [
+          // 规格
+          TabProductView(uniqueTag: uniqueTag),
+          // 详情
+          TabDetailView(uniqueTag: uniqueTag),
+          // 评论
+          TabReviewsView(uniqueTag: uniqueTag),
+        ],
       ),
     );
+        // .expanded(); //如果是colum需要加这个
   }
-
 
   @override
   Widget build(BuildContext context) {
