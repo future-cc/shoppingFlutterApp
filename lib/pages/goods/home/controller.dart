@@ -70,6 +70,11 @@ class HomeController extends GetxController {
     // 基础
     Storage().setJson(Constants.storageProductsAttributesColors, attributeColors);
 
+    // 尺寸
+    var attributeSizes = await ProductApi.attributes(2);
+    // 保存离线数据  尺寸定义
+    Storage().setJson(Constants.storageProductsAttributesSizes, attributeSizes);
+
     // 保存离线数据
     Storage().setJson(Constants.storageHomeBanner, bannerItems);
     Storage().setJson(Constants.storageHomeCategories, categoryItems);
