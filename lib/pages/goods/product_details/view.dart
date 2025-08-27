@@ -19,6 +19,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
 
   // 5 定义 tag 值，唯一即可
   final String tag = '${Get.arguments['id'] ?? ''}${UniqueKey()}';
+  // T get controller => GetInstance().find<T>(tag: tag)!;
+  //主要是因为这个，所以导致多个相同类型的控制器 时，就必须通过 tag 来区分，否则 Get.find<T>() 会不知道你要找哪一个。
+
 
   @override
   Widget build(BuildContext context) {

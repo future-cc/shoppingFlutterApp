@@ -5,3 +5,4 @@ export 'links.dart';
 export 'collection.dart';
 export 'meta_data.dart';
 export 'self.dart';
+export 'attribute_model.dart';

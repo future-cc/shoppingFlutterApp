@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -5,14 +7,21 @@ import '../../../common/index.dart';
 
 // GetSingleTickerProviderStateMixin 是 TickerProvider 的实现，
 // 当需要使用 Animation controller 时，需要在控制器初始化时传递一个 vsync 参数，此时需要用到 TickerProvider
-class ProductDetailsController extends GetxController with GetSingleTickerProviderStateMixin {
+class ProductDetailsController extends GetxController
+    with GetSingleTickerProviderStateMixin {
   ProductDetailsController();
+
+  // 颜色列表
+  List<KeyValueModel<AttributeModel>> colors = [];
+
+  // 选中颜色列表
+  List<String> colorKeys = [];
 
   // tab 控制器
   late TabController tabController;
+
   // tab 控制器
   int tabIndex = 0;
-
 
   // 商品 id , 获取路由传递参数
   int? productId = Get.arguments['id'] ?? 0;
@@ -26,10 +35,16 @@ class ProductDetailsController extends GetxController with GetSingleTickerProvid
   // Banner 当前位置
   int bannerCurrentIndex = 0;
 
+  // 初始化数据
   _initData() async {
+    // 商品详情
     await _loadProduct();
+
     // 初始化 tab 控制器
     tabController = TabController(length: 3, vsync: this);
+
+    // 读取缓存
+    await _loadCache();
 
     update(["product_details"]);
   }
@@ -41,7 +56,25 @@ class ProductDetailsController extends GetxController with GetSingleTickerProvid
     update(["product_tab"]);
   }
 
+  // 读取缓存
+  _loadCache() async {
+    // 颜色列表
+    var stringColors =
+        Storage().getString(Constants.storageProductsAttributesColors);
 
+    colors = stringColors != ""
+        ? jsonDecode(stringColors).map<KeyValueModel<AttributeModel>>((item) {
+            var arrt = AttributeModel.fromJson(item);
+            return KeyValueModel(key: "${arrt.name}", value: arrt);
+          }).toList()
+        : [];
+  }
+
+  // 颜色选中
+  void onColorTap(List<String> keys) {
+    colorKeys = keys;
+    update(["product_colors"]);
+  }
 
   // Banner 切换事件
   void onChangeBanner(int index, _reason) {
@@ -75,7 +108,6 @@ class ProductDetailsController extends GetxController with GetSingleTickerProvid
     ));
   }
 
-
   // @override
   // void onInit() {
   //   super.onInit();
@@ -92,5 +124,4 @@ class ProductDetailsController extends GetxController with GetSingleTickerProvid
     super.onClose();
     tabController.dispose();
   }
-
 }
