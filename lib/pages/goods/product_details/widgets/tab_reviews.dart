@@ -1,8 +1,6 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
-
 import '../../../../common/index.dart';
 import '../index.dart';
 
@@ -92,6 +90,10 @@ class TabReviewsView extends GetView<ProductDetailsController> {
       // 星、名称、评论、图
       <Widget>[
         // 5 星
+        StarsListWidget(
+          value: item.rating ?? 0,
+          size: 12,
+        ),
         // 名称、时间
         <Widget>[
           // 名称

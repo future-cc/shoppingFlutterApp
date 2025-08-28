@@ -1,6 +1,7 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:woo_shopping_flutter/common/widgets/ext/ui_widget_ext.dart';
 import '../../../common/index.dart';
 import 'index.dart';
@@ -45,32 +46,34 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
 
   // 主视图
   Widget _buildView(BuildContext context) {
+    // return controller.product == null
+    //     ? const PlaceholdWidget() // 占位图
+    //     : _buildTabView().nestedScrollView(headViews: [
+    //         // 滚动图
+    //         _buildBanner(context).sliverToBoxAdapter(),
+    //
+    //         // 商品标题
+    //         _buildTitle(context).sliverToBoxAdapter(),
+    //
+    //         // Tab 栏位
+    //         _buildTabBar(context).sliverToBoxAdapter(),
+    //       ]);
+
     return controller.product == null
         ? const PlaceholdWidget() // 占位图
-        : _buildTabView().nestedScrollView(headViews: [
+        : (<Widget>[
             // 滚动图
-            _buildBanner(context).sliverToBoxAdapter(),
+            _buildBanner(context),
 
             // 商品标题
-            _buildTitle(context).sliverToBoxAdapter(),
+            _buildTitle(context),
 
             // Tab 栏位
-            _buildTabBar(context).sliverToBoxAdapter(),
-          ]);
+            _buildTabBar(context),
 
-    // (<Widget>[
-    //   // 滚动图
-    //   _buildBanner(context),
-    //
-    //   // 商品标题
-    //   _buildTitle(context),
-    //
-    //   // Tab 栏位
-    //   _buildTabBar(context),
-    //
-    //   // TabView 视图
-    //   _buildTabView(),
-    // ].toColumn().scrollable());
+            // TabView 视图
+            _buildTabView(),
+          ].toColumn());
   }
 
   // 滚动图
@@ -191,8 +194,7 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
           TabReviewsView(uniqueTag: uniqueTag),
         ],
       ),
-    );
-    // .expanded(); //如果是colum需要加这个
+    ).expanded(); //如果是colum需要加这个
   }
 
   // 底部按钮
@@ -214,7 +216,8 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
         .toRow(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-        ).padding(horizontal: AppSpace.page, top: 0, bottom: 15)
+        )
+        .padding(horizontal: AppSpace.page, top: 0, bottom: 15)
         .paddingHorizontal(AppSpace.page);
   }
 
@@ -238,9 +241,15 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
           // 内容
           body: SafeArea(
             child: <Widget>[
-              _buildView(context).expanded(),
-              _buildButtons(context)
-            ].toColumn()
+              // 主视图
+              SmartRefresher(
+                controller: controller.mainRefreshController, // 刷新控制器
+                onRefresh: controller.onMainRefresh, // 下拉刷新回调
+                child: _buildView(context),
+              ).expanded(),
+              // 底部按钮
+              _buildButtons(context),
+            ].toColumn(),
           ),
         );
       },
