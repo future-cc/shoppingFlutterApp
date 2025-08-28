@@ -66,5 +66,9 @@ class RoutePages {
       name: RouteNames.goodsCategory,
       page: () => const CategoryPage(),
     ),
+    GetPage(
+      name: RouteNames.searchSearchIndex,
+      page: () => const SearchIndexPage(),
+    ),
   ];
 }

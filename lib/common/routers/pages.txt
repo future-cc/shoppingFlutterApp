@@ -24,6 +24,10 @@
         page: () => const ProductDetailsPage(),
       ),
       GetPage(
+        name: RouteNames.goodsProductDetailsWidgets,
+        page: () => const WidgetsPage(),
+      ),
+      GetPage(
         name: RouteNames.msg,
         page: () => const MsgPage(),
       ),
@@ -38,6 +42,10 @@
       GetPage(
         name: RouteNames.myMyIndex,
         page: () => const MyIndexPage(),
+      ),
+      GetPage(
+        name: RouteNames.searchSearchIndex,
+        page: () => const SearchIndexPage(),
       ),
       GetPage(
         name: RouteNames.stylesImage,

@@ -12,3 +12,4 @@ export 'cart/index.dart';
 export 'goods/index.dart';
 export 'msg/index.dart';
 export 'my/index.dart';
+export 'search/search_index/index.dart';
