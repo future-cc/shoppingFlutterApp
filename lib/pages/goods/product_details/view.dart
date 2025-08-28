@@ -192,7 +192,30 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
         ],
       ),
     );
-        // .expanded(); //如果是colum需要加这个
+    // .expanded(); //如果是colum需要加这个
+  }
+
+  // 底部按钮
+  Widget _buildButtons(BuildContext context) {
+    return <Widget>[
+      // 加入购物车
+      ButtonWidget.outline(
+        LocaleKeys.gDetailBtnAddCart.tr,
+      ).expanded(),
+
+      // 间距
+      SizedBox(width: AppSpace.iconTextLarge),
+
+      // 立刻购买
+      ButtonWidget.primary(
+        LocaleKeys.gDetailBtnBuy.tr,
+      ).expanded(),
+    ]
+        .toRow(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        ).padding(horizontal: AppSpace.page, top: 0, bottom: 15)
+        .paddingHorizontal(AppSpace.page);
   }
 
   @override
@@ -214,7 +237,10 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
                   controller.product?.name ?? LocaleKeys.gDetailTitle.tr),
           // 内容
           body: SafeArea(
-            child: _buildView(context),
+            child: <Widget>[
+              _buildView(context).expanded(),
+              _buildButtons(context)
+            ].toColumn()
           ),
         );
       },
