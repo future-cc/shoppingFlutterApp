@@ -64,6 +64,8 @@ class SearchFilterPage extends GetView<SearchFilterController> {
         elevation: 0,
         // 高度
         height: 24.h,
+        // 点击事件
+        onTap: controller.onFilterOpenTap, // 加入事件
       ).expanded(),
     ].toRow();
   }
@@ -80,6 +82,7 @@ class SearchFilterPage extends GetView<SearchFilterController> {
       id: "search_filter",
       builder: (_) {
         return Scaffold(
+          key: controller.scaffoldKey,
           // 导航
           appBar: mainAppBarWidget(
             // 返回按钮
@@ -95,11 +98,25 @@ class SearchFilterPage extends GetView<SearchFilterController> {
             // 点击事件
             onTap: () => Get.back(),
           ),
-
           // 内容
           body: _buildView(context),
+          // drawer: const Drawer(
+          //   child: SafeArea(child: FilterView()),
+          // ),
+          // 右侧弹出 Drawer
+          endDrawer: const Drawer(
+            child: SafeArea(child: FilterView()),
+          ),
         );
       },
     );
   }
 }
+
+//顶部相关：appBar
+//主体相关：body、backgroundColor
+//底部相关：bottomNavigationBar、persistentFooterButtons、bottomSheet
+//悬浮按钮相关：floatingActionButton + 位置/动画
+//抽屉相关：drawer、endDrawer
+//布局控制：resizeToAvoidBottomInset、extendBody、extendBodyBehindAppBar
+//提示消息：scaffoldMessengerKey
