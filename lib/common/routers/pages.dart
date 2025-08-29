@@ -70,5 +70,9 @@ class RoutePages {
       name: RouteNames.searchSearchIndex,
       page: () => const SearchIndexPage(),
     ),
+    GetPage(
+      name: RouteNames.searchSearchFilter,
+      page: () => const SearchFilterPage(),
+    ),
   ];
 }

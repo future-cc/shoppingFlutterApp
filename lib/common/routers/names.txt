@@ -9,6 +9,7 @@ static const msg = '/msg';
 static const msgMsgIndex = '/msg_msg_index';
 static const my = '/my';
 static const myMyIndex = '/my_my_index';
+static const searchSearchFilter = '/search_search_filter';
 static const searchSearchIndex = '/search_search_index';
 static const stylesImage = '/styles_image';
 static const stylesInput = '/styles_input';

@@ -9,6 +9,7 @@ export 'msg/index.dart';
 export 'msg/msg_index/index.dart';
 export 'my/index.dart';
 export 'my/my_index/index.dart';
+export 'search/search_filter/index.dart';
 export 'search/search_index/index.dart';
 export 'styles/image/index.dart';
 export 'styles/input/index.dart';

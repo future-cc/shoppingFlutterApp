@@ -12,4 +12,5 @@ class RouteNames {
   static const goodsProductDetails = '/goods_product_details';
   static const goodsCategory = '/goods_category';
   static const searchSearchIndex = '/search_search_index';
+  static const searchSearchFilter = '/search_search_filter';
 }
