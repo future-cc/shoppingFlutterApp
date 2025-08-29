@@ -35,12 +35,37 @@ class FilterView extends GetView<SearchFilterController> {
       // 顶部
       _buildTopBar(context),
 
-      // end
+      // 价格
+      _buildTitle(LocaleKeys.searchFilterPrice.tr),
+      _buildPriceRange(),
     ]
         .toColumn(
           crossAxisAlignment: CrossAxisAlignment.start,
         )
         .paddingHorizontal(AppSpace.page);
+  }
+
+  // 标题栏
+  Widget _buildTitle(String title) {
+    return TextWidget.label(
+      title,
+      weight: FontWeight.w600,
+    ).paddingBottom(AppSpace.listRow);
+  }
+
+  // 价格选择区间
+  Widget _buildPriceRange() {
+    return GetBuilder<SearchFilterController>(
+      id: "filter_price_range",
+      builder: (_) {
+        return PriceRangeWidget(
+          max: 5000,
+          min: 0,
+          values: controller.priceRange,
+          onDragging: controller.onPriceRangeDragging,
+        ).paddingBottom(AppSpace.listRow * 2);
+      },
+    );
   }
 
   @override
