@@ -32,6 +32,7 @@ dependencies:
   encrypt: ^5.0.3
   pull_to_refresh_flutter3: ^2.0.2
   photo_view: ^0.15.0
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   flutter_test:
