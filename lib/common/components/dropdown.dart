@@ -49,9 +49,9 @@ class DropdownWidget extends StatelessWidget {
         // 下拉项列表
         items: items
             ?.map((item) => DropdownMenuItem<KeyValueModel>(
-          value: item,
-          child: TextWidget.label(item.value),
-        ))
+                  value: item,
+                  child: TextWidget.label(item.value),
+                ))
             .toList(),
         // 选中项
         value: selectedValue,
@@ -67,6 +67,9 @@ class DropdownWidget extends StatelessWidget {
         //     EdgeInsets.symmetric(horizontal: AppSpace.iconTextSmail),
         // // 偏移
         // offset: const Offset(0, 0),
+        // dropdownStyleData: DropdownStyleData(
+        //   width: 200, // 设置下拉宽度
+        // ),
       ),
     );
   }
@@ -76,4 +79,3 @@ class DropdownWidget extends StatelessWidget {
     return _buildView();
   }
 }
-
