@@ -9,11 +9,38 @@ class SearchIndexPage extends GetView<SearchIndexController> {
   const SearchIndexPage({super.key});
 
   // 主视图
-  Widget _buildView() {
-    return const Center(
-      child: Text("SearchIndexPage"),
+  Widget _buildView(BuildContext context) {
+    return _buildList(context);
+  }
+
+
+  // 列表
+  Widget _buildList(BuildContext context) {
+    return ListView.separated(
+      itemBuilder: (BuildContext context, int index) {
+        TagsModel item = controller.tagsList[index];
+        return _buildListItem(context, item);
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return const Divider();
+      },
+      itemCount: controller.tagsList.length,
     );
   }
+
+
+  // 列表项
+  Widget _buildListItem(BuildContext context, TagsModel item) {
+    return ListTile(
+      title: TextWidget.label(item.name ?? ""),
+      trailing: IconWidget.icon(
+        Icons.north_west,
+        color: context.colors.scheme.primary,
+      ),
+      onTap: () => controller.onListItemTap(item),
+    );
+  }
+
 
   // 导航栏
   AppBar _buildAppBar() {
@@ -39,16 +66,17 @@ class SearchIndexPage extends GetView<SearchIndexController> {
       id: "search_index",
       builder: (_) {
         return Scaffold(
-          // 搜索栏
+          // 导航栏
           appBar: _buildAppBar(),
 
-          // 内容
+          // 主视图
           body: SafeArea(
-            child: _buildView(),
+            child: _buildView(context),
           ),
         );
       },
     );
   }
+
 
 }

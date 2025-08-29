@@ -2,8 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../common/index.dart';
+
 class SearchIndexController extends GetxController {
   SearchIndexController();
+
+  // Tags 列表
+  List<TagsModel> tagsList = [];
 
   // 搜索关键词
   final searchKeyWord = "".obs;
@@ -49,6 +54,7 @@ class SearchIndexController extends GetxController {
         }
 
         // 拉取数据
+        await _loadSearch(value);
         update(["search_index"]);
       },
 
@@ -61,6 +67,34 @@ class SearchIndexController extends GetxController {
       searchKeyWord.value = searchEditController.text;
     });
   }
+
+  // 列表项点击事件
+  void onListItemTap(TagsModel model) {}
+
+  /// 拉取数据
+  Future<bool> _loadSearch(String keyword) async {
+    if (keyword.trim().isEmpty == true) {
+      tagsList.clear();
+      return tagsList.isEmpty;
+    }
+
+    // 拉取数据
+    var result = await ProductApi.tags(TagsReq(
+      // 关键词
+      search: keyword,
+    ));
+
+    // 清空数据
+    tagsList.clear();
+
+    // 返回数据不为空
+    if (result.isNotEmpty) {
+      tagsList.addAll(result); // 添加数据
+    }
+
+    return tagsList.isEmpty;
+  }
+
 
   @override
   void onClose() {
