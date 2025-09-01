@@ -42,6 +42,10 @@ class FilterView extends GetView<SearchFilterController> {
       // 尺寸
       _buildTitle(LocaleKeys.searchFilterSize.tr),
       _buildSizes(context),
+
+      // 评价
+      _buildTitle(LocaleKeys.searchFilterReview.tr),
+      _buildStars(context),
     ]
         .toColumn(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,6 +59,21 @@ class FilterView extends GetView<SearchFilterController> {
       title,
       weight: FontWeight.w600,
     ).paddingBottom(AppSpace.listRow);
+  }
+
+  // 评级选择
+  Widget _buildStars(BuildContext context) {
+    return GetBuilder<SearchFilterController>(
+      id: "filter_stars",
+      builder: (_) {
+        return StarsListWidget(
+          value: controller.starValue,
+          onTap: controller.onStarTap,
+          selectedColor: context.colors.scheme.secondary,
+          size: 18,
+        ).paddingBottom(AppSpace.listRow * 2);
+      },
+    );
   }
 
   // 价格选择区间

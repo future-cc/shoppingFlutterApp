@@ -8,6 +8,9 @@ import '../../../common/index.dart';
 class SearchFilterController extends GetxController {
   SearchFilterController();
 
+  // 星级
+  int starValue = -1;
+
   // 价格范围 0~1000
   final List<double> priceRange = [100, 1000];
 
@@ -44,6 +47,12 @@ class SearchFilterController extends GetxController {
   // 筛选 打开
   void onFilterOpenTap() {
     scaffoldKey.currentState?.openEndDrawer();
+  }
+
+  // 星级选中
+  void onStarTap(int value) {
+    starValue = value;
+    update(["filter_stars"]);
   }
 
   // 筛选 关闭
