@@ -12,8 +12,8 @@ class Constants {
   static const aesKey = 'aH5aH5bG0dC6aA3oN0cK4aU5jU6aK2lN';
   static const aesIV = 'hK6eB4aE1aF3gH5q';
 
-  static const storageToken = 'token';// 登录成功后 token
-  static const storageProfile = 'profile';// 用户资料缓存
+  static const storageToken = 'token'; // 登录成功后 token
+  static const storageProfile = 'profile'; // 用户资料缓存
 
   // 首页离线
   static const storageHomeBanner = 'home_banner';
@@ -27,5 +27,13 @@ class Constants {
   // 尺寸定义
   static const storageProductsAttributesSizes = 'products_attributes_sizes';
 
+  // 品牌
+  static const storageProductsAttributesBrand = 'products_attributes_brand';
 
+  // 性别
+  static const storageProductsAttributesGender = 'products_attributes_gender';
+
+  // 新旧
+  static const storageProductsAttributesCondition =
+      'products_attributes_condition';
 }

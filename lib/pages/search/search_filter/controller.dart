@@ -23,6 +23,18 @@ class SearchFilterController extends GetxController {
   // 全局 key
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
+  // Brand
+  List<KeyValueModel<AttributeModel>> brands = [];
+  List<String> brandKeys = [];
+
+  // Gender
+  List<KeyValueModel<AttributeModel>> genders = [];
+  List<String> genderKeys = [];
+
+  // Condition
+  List<KeyValueModel<AttributeModel>> conditions = [];
+  List<String> conditionKeys = [];
+
   // 排序列表
   List<KeyValueModel> orderList = [
     KeyValueModel(key: "rating", value: "Best Match"),
@@ -84,6 +96,55 @@ class SearchFilterController extends GetxController {
       var arrt = AttributeModel.fromJson(item);
       return KeyValueModel(key: "${arrt.name}", value: arrt);
     }).toList();
+
+    // 品牌列表
+    {
+      String result =
+          Storage().getString(Constants.storageProductsAttributesBrand);
+      brands = jsonDecode(result).map<KeyValueModel<AttributeModel>>((item) {
+        var arrt = AttributeModel.fromJson(item);
+        return KeyValueModel(key: "${arrt.name}", value: arrt);
+      }).toList();
+    }
+
+    // 性别列表
+    {
+      String result =
+          Storage().getString(Constants.storageProductsAttributesGender);
+      genders = jsonDecode(result).map<KeyValueModel<AttributeModel>>((item) {
+        var arrt = AttributeModel.fromJson(item);
+        return KeyValueModel(key: "${arrt.name}", value: arrt);
+      }).toList();
+    }
+
+    // 新旧列表
+    {
+      String result =
+          Storage().getString(Constants.storageProductsAttributesCondition);
+      conditions =
+          jsonDecode(result).map<KeyValueModel<AttributeModel>>((item) {
+        var arrt = AttributeModel.fromJson(item);
+        return KeyValueModel(key: "${arrt.name}", value: arrt);
+      }).toList();
+    }
+  }
+
+  // 品牌选中
+  void onBrandTap(List<String> keys) {
+    brandKeys = keys;
+    update(["filter_brands"]);
+  }
+
+  // 性别选中
+  void onGenderTap(List<String> keys) {
+    genderKeys = keys;
+    update(["filter_genders"]);
+  }
+
+  // 新旧选中
+  void onConditionTap(List<String> keys) {
+    conditionKeys = keys;
+    update(["filter_conditions"]);
   }
 
   // 尺寸选中
@@ -92,7 +153,6 @@ class SearchFilterController extends GetxController {
     update(["filter_sizes"]);
   }
 
-
   void onTap() {}
 
   @override
@@ -100,7 +160,6 @@ class SearchFilterController extends GetxController {
     super.onInit();
     _loadCache();
   }
-
 
   @override
   void onReady() {

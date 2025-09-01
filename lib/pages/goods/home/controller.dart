@@ -68,7 +68,8 @@ class HomeController extends GetxController {
 
     // 保存离线数据
     // 基础
-    Storage().setJson(Constants.storageProductsAttributesColors, attributeColors);
+    Storage()
+        .setJson(Constants.storageProductsAttributesColors, attributeColors);
 
     // 尺寸
     var attributeSizes = await ProductApi.attributes(2);
@@ -85,6 +86,21 @@ class HomeController extends GetxController {
     // await Future.delayed(const Duration(seconds: 1));
     update(["home"]);
     refreshController.refreshCompleted();
+
+    // 品牌
+    var attributeBrand = await ProductApi.attributes(3);
+    // 性别
+    var attributeGender = await ProductApi.attributes(4);
+    // 新旧
+    var attributeCondition = await ProductApi.attributes(5);
+
+    // 保存离线数据
+    Storage().setString(
+        Constants.storageProductsAttributesBrand, jsonEncode(attributeBrand));
+    Storage().setString(
+        Constants.storageProductsAttributesGender, jsonEncode(attributeGender));
+    Storage().setString(Constants.storageProductsAttributesCondition,
+        jsonEncode(attributeCondition));
   }
 
   /// 拉取数据
@@ -157,7 +173,6 @@ class HomeController extends GetxController {
   void onAppBarTap() {
     Get.toNamed(RouteNames.searchSearchIndex);
   }
-
 
   void onTap() {}
 
