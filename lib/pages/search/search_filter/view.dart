@@ -1,6 +1,7 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import '../../../common/index.dart';
 import 'index.dart';
@@ -13,8 +14,25 @@ class SearchFilterPage extends GetView<SearchFilterController> {
     return <Widget>[
       // 筛选栏
       _buildFilterBar(context),
+
       // 数据列表
-      _buildListView(),
+      SmartRefresher(
+        controller: controller.refreshController,
+        // 刷新控制器
+        enablePullUp: true,
+        // 启用上拉加载
+        onRefresh: controller.onRefresh,
+        // 下拉刷新回调
+        onLoading: controller.onLoading,
+        // 上拉加载回调
+        footer: const SmartRefresherFooterWidget(),
+        // 底部加载更多
+        child: CustomScrollView(
+          slivers: [
+            _buildListView(context).sliverPaddingHorizontal(AppSpace.button),
+          ],
+        ),
+      ).expanded(),
     ].toColumn();
   }
 
@@ -71,8 +89,33 @@ class SearchFilterPage extends GetView<SearchFilterController> {
   }
 
   // 数据列表
-  Widget _buildListView() {
-    return Text("数据列表");
+  Widget _buildListView(BuildContext context) {
+    return GetBuilder<SearchFilterController>(
+      id: "filter_products",
+      builder: (_) {
+        return controller.items.isEmpty
+            ?
+            // 占位图
+            const PlaceholdWidget().sliverBox
+            :
+            // 数据列表
+            SliverGrid.extent(
+                maxCrossAxisExtent: 120,
+                mainAxisSpacing: AppSpace.listRow,
+                // 主轴间距
+                crossAxisSpacing: AppSpace.listItem,
+                // 交叉轴间距
+                childAspectRatio: 0.7,
+                // 宽高比
+                children: controller.items.map((product) {
+                  return ProductItemWidget(
+                    product, // 商品
+                    imgHeight: 117.w, // 图片高度
+                  );
+                }).toList(),
+              );
+      },
+    );
   }
 
   @override
