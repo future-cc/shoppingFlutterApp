@@ -60,6 +60,10 @@
         page: () => const InputPage(),
       ),
       GetPage(
+        name: RouteNames.stylesListTile,
+        page: () => const ListTilePage(),
+      ),
+      GetPage(
         name: RouteNames.stylesStylesIndex,
         page: () => const StylesIndexPage(),
       ),

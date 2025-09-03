@@ -13,4 +13,5 @@ class RouteNames {
   static const goodsCategory = '/goods_category';
   static const searchSearchIndex = '/search_search_index';
   static const searchSearchFilter = '/search_search_filter';
+  static const stylesListTile = '/styles_list_tile';
 }

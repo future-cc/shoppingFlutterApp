@@ -10,7 +10,6 @@ class StylesIndexPage extends GetView<StylesIndexController> {
 
   // 主视图
   Widget _buildView(BuildContext context) {
-
     //按钮组件
     return <Widget>[
       // form 表单
@@ -99,6 +98,12 @@ class StylesIndexPage extends GetView<StylesIndexController> {
             color: context.colors.primary,
           ),
           onTap: () {}),
+
+      // ListTile 列表项
+      ListTile(
+        onTap: () => Get.toNamed(RouteNames.stylesListTile),
+        title: const Text("ListTile 列表项"),
+      ),
 
       //
     ].toColumnSpace().center().scrollable();

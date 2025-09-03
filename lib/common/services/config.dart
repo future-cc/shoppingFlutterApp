@@ -77,6 +77,16 @@ class ConfigService extends GetxService {
     Storage().setBool(Constants.storageAlreadyOpen, true);
   }
 
+  // 切换主题
+  void switchThemeMode() {
+    // 品乓方式切换
+    themeMode = themeMode == AdaptiveThemeMode.light
+        ? AdaptiveThemeMode.dark
+        : AdaptiveThemeMode.light;
+
+    setThemeMode(themeMode.name);
+  }
+
 
   // 获取包信息
   Future<void> getPlatform() async {

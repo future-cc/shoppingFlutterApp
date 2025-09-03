@@ -1,5 +1,8 @@
 import 'package:get/get.dart';
 
+import '../../../common/index.dart';
+import '../../index.dart';
+
 class MyIndexController extends GetxController {
   MyIndexController();
 
@@ -20,8 +23,15 @@ class MyIndexController extends GetxController {
     _initData();
   }
 
-  // @override
-  // void onClose() {
-  //   super.onClose();
-  // }
+  // 注销
+  void onLogout() {
+    UserService.to.logout();
+    //Get里面可以找到已经存在的control
+    Get.find<MainController>().onJumpToPage(0);
+  }
+
+// @override
+// void onClose() {
+//   super.onClose();
+// }
 }

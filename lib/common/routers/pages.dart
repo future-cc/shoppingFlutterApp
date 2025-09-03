@@ -74,5 +74,9 @@ class RoutePages {
       name: RouteNames.searchSearchFilter,
       page: () => const SearchFilterPage(),
     ),
+    GetPage(
+      name: RouteNames.stylesListTile,
+      page: () => const ListTilePage(),
+    ),
   ];
 }
