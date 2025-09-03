@@ -65,6 +65,7 @@ class MyIndexPage extends GetView<MyIndexController> {
       stretch: true,
       // 高度
       expandedHeight: 280.h,
+      // collapsedHeight: 100.h,
       // 此小组件堆叠在工具栏和选项卡栏后面。其高度将与应用栏的整体高度相同。
       flexibleSpace: FlexibleSpaceBar(
         // // // 折叠模式
