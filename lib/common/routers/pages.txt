@@ -40,6 +40,10 @@
         page: () => const MyPage(),
       ),
       GetPage(
+        name: RouteNames.myMyAddress,
+        page: () => const MyAddressPage(),
+      ),
+      GetPage(
         name: RouteNames.myMyIndex,
         page: () => const MyIndexPage(),
       ),

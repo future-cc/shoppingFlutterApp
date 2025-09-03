@@ -78,5 +78,9 @@ class RoutePages {
       name: RouteNames.stylesListTile,
       page: () => const ListTilePage(),
     ),
+    GetPage(
+      name: RouteNames.myMyAddress,
+      page: () => const MyAddressPage(),
+    ),
   ];
 }

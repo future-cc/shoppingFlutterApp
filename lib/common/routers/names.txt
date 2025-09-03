@@ -8,6 +8,7 @@ static const goodsProductDetailsWidgets = '/goods_product_details_widgets';
 static const msg = '/msg';
 static const msgMsgIndex = '/msg_msg_index';
 static const my = '/my';
+static const myMyAddress = '/my_my_address';
 static const myMyIndex = '/my_my_index';
 static const searchSearchFilter = '/search_search_filter';
 static const searchSearchIndex = '/search_search_index';

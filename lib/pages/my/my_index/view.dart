@@ -210,6 +210,20 @@ class MyIndexPage extends GetView<MyIndexController> {
         onTap: null, //() => ConfigService.to.switchThemeMode(),
       ),
 
+      // Billing Address
+      _buildListItem(
+        txtTitle: LocaleKeys.myBtnBillingAddress.tr,
+        svgPath: AssetsSvgs.pHomeSvg,
+        onTap: () => controller.onToAddress("Billing"), // 类型 billing
+      ),
+
+      // Shipping Address
+      _buildListItem(
+        txtTitle: LocaleKeys.myBtnShippingAddress.tr,
+        svgPath: AssetsSvgs.pHomeSvg,
+        onTap: () => controller.onToAddress("Shipping"), // 类型 shipping
+      ),
+
       // 调试工具
       _buildListItem(
         txtTitle: LocaleKeys.myBtnStyles.tr,
