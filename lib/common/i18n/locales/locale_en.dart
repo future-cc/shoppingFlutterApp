@@ -20,13 +20,13 @@ Map<String, String> localeEn = {
   // welcome 欢迎
   LocaleKeys.welcomeOneTitle: 'Choose Your Desire Product',
   LocaleKeys.welcomeOneDesc:
-  'Contrary to popular belief, Lorem Ipsum is not simply random text',
+      'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeTwoTitle: 'Complete your shopping',
   LocaleKeys.welcomeTwoDesc:
-  'Contrary to popular belief, Lorem Ipsum is not simply random text',
+      'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeThreeTitle: 'Get product at your door',
   LocaleKeys.welcomeThreeDesc:
-  'Contrary to popular belief, Lorem Ipsum is not simply random text',
+      'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeSkip: 'Skip',
   LocaleKeys.welcomeNext: 'Next',
   LocaleKeys.welcomeStart: 'Get Started',
@@ -54,7 +54,7 @@ Map<String, String> localeEn = {
   LocaleKeys.validatorMin: 'Length cannot be less than @size',
   LocaleKeys.validatorMax: 'Length cannot be greater than @size',
   LocaleKeys.validatorPassword:
-  'password must have between @min and @max digits',
+      'password must have between @min and @max digits',
 
   // 注册PIN - register pin
   LocaleKeys.registerPinTitle: 'Verification',
@@ -100,5 +100,20 @@ Map<String, String> localeEn = {
   LocaleKeys.searchFilterGender: 'Gender',
   LocaleKeys.searchFilterCondition: 'Condition',
 
-
+  // 我的
+  LocaleKeys.myTabWishlist: 'Wishlist',
+  LocaleKeys.myTabFollowing: 'Following',
+  LocaleKeys.myTabVoucher: 'Voucher',
+  LocaleKeys.myBtnMyOrder: 'My Order',
+  LocaleKeys.myBtnMyWallet: 'My Wallet',
+  LocaleKeys.myBtnEditProfile: 'Edit Profile',
+  LocaleKeys.myBtnAddress: 'Address',
+  LocaleKeys.myBtnNotification: 'Notification',
+  LocaleKeys.myBtnLanguage: 'Language',
+  LocaleKeys.myBtnTheme: 'Theme',
+  LocaleKeys.myBtnWinGift: 'Win Gift',
+  LocaleKeys.myBtnLogout: 'Logout',
+  LocaleKeys.myBtnStyles: 'Styles',
+  LocaleKeys.myBtnBillingAddress: 'Billing address',
+  LocaleKeys.myBtnShippingAddress: 'Shipping address',
 };
