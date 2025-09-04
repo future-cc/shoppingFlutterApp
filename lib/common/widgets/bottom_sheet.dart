@@ -198,7 +198,8 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget>
       },
       animationController: _animationController,
       showDragHandle: false,
-      enableDrag: false, // false 才有拖动效果
+      enableDrag: false,
+      // false 才有拖动效果
       backgroundColor: widget.backgroundColor ?? context.colors.scheme.surface,
       elevation: widget.elevation,
     );
