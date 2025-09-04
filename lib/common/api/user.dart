@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 import '../index.dart';
 
 /// 用户 api
@@ -68,7 +70,11 @@ class UserApi {
 
     List<ContinentsModel> continents = [];
     for (var item in res.data) {
-      continents.add(ContinentsModel.fromJson(item));
+      try {
+        continents.add(ContinentsModel.fromJson(item));
+      } catch(e) {
+        e.printError();
+      }
     }
     return continents;
   }
