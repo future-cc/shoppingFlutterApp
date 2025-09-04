@@ -1,5 +1,7 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_picker_plus/picker.dart';
 import 'package:get/get.dart';
 
 import '../../../common/index.dart';
@@ -9,6 +11,15 @@ class MyAddressController extends GetxController {
 
   // 地址类型 Billing 订单发票地址，Shipping 订单收货地址
   final String type = Get.arguments['type'] ?? "";
+
+  // 大陆国家洲省
+  List<ContinentsModel> continents = [];
+
+  // 大陆国家数据
+  List<PickerItem> countriesList = [];
+
+  // 国家选择
+  List<int> countrySels = [];
 
   // 表单 form
   GlobalKey formKey = GlobalKey<FormState>();
@@ -54,8 +65,60 @@ class MyAddressController extends GetxController {
       statesController.text = profile.shipping?.state ?? "";
     }
 
+    // 拉取 大陆国家数据
+    await _fetchContinents();
+
+    // 国家代码
+    String countryCode = countryController.text;
+
+    // 国家选着器 - 选中 index
+    for (var i = 0; i < continents.length; i++) {
+      // 大陆
+      var continent = continents[i];
+      // 检查是否有选中的国家
+      int iCountryIndex =
+          continent.countries?.indexWhere((el) => el.code == countryCode) ?? 0;
+      if (iCountryIndex > 0) {
+        [
+          i,
+          iCountryIndex,
+        ];
+        break;
+      }
+    }
+
     update(["my_address"]);
   }
+
+
+  // 国家选择
+  void onCountryPicker() async {
+    BottomSheetWidget.show(
+      context: Get.context!,
+      titleString: "国家",
+      padding: 20,
+      content: Picker(
+        adapter: PickerDataAdapter(data: countriesList),
+        selecteds: countrySels,
+        itemExtent: 40,
+        height: 270,
+        backgroundColor: Colors.transparent,
+        containerColor: Colors.transparent,
+        cancelText: LocaleKeys.commonBottomCancel.tr,
+        confirmText: LocaleKeys.commonBottomConfirm.tr,
+        onConfirm: (Picker picker, List<int> value) {
+          countrySels = value;
+          final selectedValues = picker.getSelectedValues();
+          if (selectedValues.isNotEmpty) {
+            final selectedCountry = selectedValues.last as String;
+            countryController.text = selectedCountry;
+            update(["my_address"]);
+          }
+        },
+      ).makePicker(),
+    );
+  }
+
 
   // 保存
   Future<void> onSave() async {
@@ -127,16 +190,6 @@ class MyAddressController extends GetxController {
     countryController.dispose();
   }
 
-  // 国家选择
-  void onCountryPicker() async {
-    BottomSheetWidget.show(
-      context: Get.context!,
-      titleString: "国家",
-      padding: 20,
-      content: const Text("国家 content").height(200),
-    );
-  }
-
   // 洲省市选择
   void onStatesPicker() async {
     BottomSheetWidget.show(
@@ -145,5 +198,25 @@ class MyAddressController extends GetxController {
       padding: 20,
       content: const Text("州/省 content").height(200),
     );
+  }
+
+  // 拉取大陆国家洲省数据
+  Future<void> _fetchContinents() async {
+    continents = await UserApi.continents();
+    countriesList = List.generate(continents.length, (index) {
+      var entity = continents[index];
+      List<PickerItem> countryList = [];
+      for (Country country in entity.countries ?? []) {
+        countryList.add(PickerItem(
+          text: Text(country.name ?? "-"),
+          value: country.code ?? "-",
+        ));
+      }
+      return PickerItem(
+        text: Text(entity.code ?? "-"),
+        value: entity.name ?? "-",
+        children: countryList,
+      );
+    });
   }
 }
