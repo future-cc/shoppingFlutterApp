@@ -16,6 +16,7 @@ class InputWidget extends StatefulWidget {
     this.onChanged,
     this.keyboardType,
     this.autofocus,
+    this.onTap,
     // required this.focusNode,
     // required this.style,
     // required this.cursorColor,
@@ -51,6 +52,9 @@ class InputWidget extends StatefulWidget {
 
   /// 自动焦点
   final bool? autofocus;
+
+  /// 点击事件
+  final Function()? onTap;
 
   // final FocusNode focusNode;
   // final TextStyle style;
@@ -98,67 +102,78 @@ class _InputWidgetState extends State<InputWidget> {
         showPassword == true ? Icons.visibility : Icons.visibility_off,
         size: 20,
       ).ripple().clipOval().gestures(
-        onTap: () => setState(() {
-          showPassword = !showPassword!;
-        }),
-      );
+            onTap: () => setState(() {
+              showPassword = !showPassword!;
+            }),
+          );
     }
 
     // 清除按钮
     Widget? cleanButton = widget.cleanable == true && showClean == true
         ? ButtonWidget.icon(
-      const Icon(
-        Icons.cancel,
-        size: 20,
-      ),
-      onTap: () {
-        controller.clear();
-        setState(() {
-          showClean = false;
-        });
-        widget.onChanged?.call("");
-      },
-    )
+            const Icon(
+              Icons.cancel,
+              size: 20,
+            ),
+            onTap: () {
+              controller.clear();
+              setState(() {
+                showClean = false;
+              });
+              widget.onChanged?.call("");
+            },
+          )
         : null;
 
     // 占位文本
     Widget? placeholder = controller.text.isEmpty &&
-        hasFocus == false &&
-        widget.placeholder != null
+            hasFocus == false &&
+            widget.placeholder != null
         ? Align(
-      alignment: Alignment.centerLeft,
-      child: TextWidget.muted(
-        widget.placeholder!,
-      ),
-    )
+            alignment: Alignment.centerLeft,
+            child: TextWidget.muted(
+              widget.placeholder!,
+            ),
+          )
         : null;
 
     // 2 输入框
-    Widget textField = EditableText(
-      controller: controller,
-      focusNode: focusNode,
-      readOnly: widget.readOnly ?? false,
-      style: TextStyle(
+    Widget textField = const SizedBox();
+    if (widget.readOnly == true) {
+      // 只读
+      textField = TextWidget.label(
+        controller.text,
         color: colorScheme.onSurface,
-        fontSize: 16,
-      ),
-      cursorColor: colorScheme.onSurface,
-      backgroundCursorColor: Colors.transparent,
-      onTapOutside: (tapOutside) {
-        focusNode.unfocus();
-      },
-      obscureText: widget.obscureText == true && showPassword == false,
-      onChanged: (value) {
-        setState(() {
-          showClean = value.isNotEmpty;
-        });
-        widget.onChanged?.call(value);
-      },
-      keyboardType: widget.keyboardType,
-      autofocus: widget.autofocus ?? false,
-      maxLines: 1, // 限制为单行
-    );
-
+      ).width(double.infinity);
+      // 点击事件
+      if (widget.onTap != null) {
+        textField = textField.onTap(widget.onTap);
+      }
+    } else {
+      textField = EditableText(
+        controller: controller,
+        focusNode: focusNode,
+        style: TextStyle(
+          color: colorScheme.onSurface,
+          fontSize: 16,
+        ),
+        cursorColor: colorScheme.onSurface,
+        backgroundCursorColor: Colors.transparent,
+        onTapOutside: (tapOutside) {
+          focusNode.unfocus();
+        },
+        obscureText: widget.obscureText == true && showPassword == false,
+        onChanged: (value) {
+          setState(() {
+            showClean = value.isNotEmpty;
+          });
+          widget.onChanged?.call(value);
+        },
+        keyboardType: widget.keyboardType,
+        autofocus: widget.autofocus ?? false,
+        maxLines: 1, // 限制为单行
+      );
+    }
     // 输入区域
     Widget inputArea = Stack(
       children: [
@@ -242,4 +257,3 @@ class _InputWidgetState extends State<InputWidget> {
     return _buildView();
   }
 }
-
