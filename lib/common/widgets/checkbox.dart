@@ -17,7 +17,7 @@ class CheckboxWidget extends StatelessWidget {
   final String? title;
   final String? description;
 
-  final Function(bool?)? onChanged;
+  final Function(bool)? onChanged;
 
   @override
   Widget build(BuildContext context) {
