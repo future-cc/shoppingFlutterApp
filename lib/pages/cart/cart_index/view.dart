@@ -1,6 +1,7 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:woo_shopping_flutter/pages/cart/cart_index/widgets/cart_item.dart';
 
 import '../../../common/index.dart';
 import 'index.dart';
@@ -29,7 +30,10 @@ class CartIndexPage extends GetView<CartIndexController> {
     return ListView.separated(
       itemBuilder: (BuildContext context, int index) {
         LineItem item = CartService.to.lineItems[index];
-        return Text(item.product?.name ?? "").paddingAll(AppSpace.card).card();
+        // 购物车项
+        return CartItem(
+          lineItem: item,
+        ).paddingAll(AppSpace.card).card();
       },
       separatorBuilder: (BuildContext context, int index) {
         return SizedBox(height: AppSpace.listRow);
@@ -37,6 +41,7 @@ class CartIndexPage extends GetView<CartIndexController> {
       itemCount: CartService.to.lineItems.length,
     );
   }
+
 
   // 优惠券, 568935ab
   Widget _buildCoupons() {
