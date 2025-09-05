@@ -12,6 +12,7 @@ static const myMyAddress = '/my_my_address';
 static const myMyIndex = '/my_my_index';
 static const searchSearchFilter = '/search_search_filter';
 static const searchSearchIndex = '/search_search_index';
+static const stylesCheckbox = '/styles_checkbox';
 static const stylesImage = '/styles_image';
 static const stylesInput = '/styles_input';
 static const stylesListTile = '/styles_list_tile';

@@ -1,6 +1,7 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:woo_shopping_flutter/pages/cart/cart_index/widgets/action_bar.dart';
 import 'package:woo_shopping_flutter/pages/cart/cart_index/widgets/cart_item.dart';
 
 import '../../../common/index.dart';
@@ -13,6 +14,11 @@ class CartIndexPage extends GetView<CartIndexController> {
   Widget _buildView(BuildContext context) {
     return <Widget>[
       // 顶部操作栏
+      ActionBar(
+        onAll: controller.onSelectAll,
+        onRemove: controller.onOrderCancel,
+        isAll: controller.isSelectedAll,
+      ).paddingAll(AppSpace.page),
 
       // 订单列表
       _buildOrders().paddingHorizontal(AppSpace.page).expanded(),
@@ -33,6 +39,11 @@ class CartIndexPage extends GetView<CartIndexController> {
         // 购物车项
         return CartItem(
           lineItem: item,
+          // 是否选中
+          isSelected: controller.isSelected(item.productId!),
+          // 选中回调
+          onSelect: (isSelected) =>
+              controller.onSelect(item.productId!, isSelected!),
         ).paddingAll(AppSpace.card).card();
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -41,7 +52,6 @@ class CartIndexPage extends GetView<CartIndexController> {
       itemCount: CartService.to.lineItems.length,
     );
   }
-
 
   // 优惠券, 568935ab
   Widget _buildCoupons() {

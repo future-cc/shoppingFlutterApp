@@ -56,6 +56,10 @@
         page: () => const SearchIndexPage(),
       ),
       GetPage(
+        name: RouteNames.stylesCheckbox,
+        page: () => const CheckboxPage(),
+      ),
+      GetPage(
         name: RouteNames.stylesImage,
         page: () => const ImagePage(),
       ),

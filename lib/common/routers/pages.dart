@@ -82,5 +82,9 @@ class RoutePages {
       name: RouteNames.myMyAddress,
       page: () => const MyAddressPage(),
     ),
+    GetPage(
+      name: RouteNames.stylesCheckbox,
+      page: () => const CheckboxPage(),
+    ),
   ];
 }

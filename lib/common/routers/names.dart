@@ -15,4 +15,5 @@ class RouteNames {
   static const searchSearchFilter = '/search_search_filter';
   static const stylesListTile = '/styles_list_tile';
   static const myMyAddress = '/my_my_address';
+  static const stylesCheckbox = '/styles_checkbox';
 }

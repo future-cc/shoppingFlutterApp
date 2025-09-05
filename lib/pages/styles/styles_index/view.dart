@@ -105,6 +105,13 @@ class StylesIndexPage extends GetView<StylesIndexController> {
         title: const Text("ListTile 列表项"),
       ),
 
+      // Checkbox 复选框
+      ListTile(
+        onTap: () => Get.toNamed(RouteNames.stylesCheckbox),
+        title: const Text("Checkbox 复选框"),
+      ),
+
+
       //
     ].toColumnSpace().center().scrollable();
 
