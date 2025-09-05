@@ -131,4 +131,13 @@ Map<String, String> localeEn = {
   LocaleKeys.addressPhoneNumber: 'Phone number',
   LocaleKeys.addressEmail: 'Email',
 
+  // 购物车
+  LocaleKeys.gCartTitle: 'My Cart',
+  LocaleKeys.gCartBtnSelectAll: 'Select All',
+  LocaleKeys.gCartBtnApplyCode: 'Apply Code',
+  LocaleKeys.gCartBtnCheckout: 'Checkout',
+  LocaleKeys.gCartTextShippingCost: 'Shipping cost',
+  LocaleKeys.gCartTextVocher: 'Voucher',
+  LocaleKeys.gCartTextTotal: 'Total',
+
 };
