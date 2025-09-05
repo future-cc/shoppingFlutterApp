@@ -2,7 +2,6 @@ import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
-import 'package:woo_shopping_flutter/common/widgets/ext/ui_widget_ext.dart';
 import '../../../common/index.dart';
 import 'index.dart';
 import 'widgets/index.dart';
@@ -201,8 +200,9 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
   Widget _buildButtons(BuildContext context) {
     return <Widget>[
       // 加入购物车
-      ButtonWidget.outline(
+      ButtonWidget.secondary(
         LocaleKeys.gDetailBtnAddCart.tr,
+        onTap: controller.onAddCartTap, // 加入购物车事件
       ).expanded(),
 
       // 间距

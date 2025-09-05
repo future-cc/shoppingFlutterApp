@@ -9,3 +9,4 @@ export 'attribute_model.dart';
 export 'review_model/index.dart';
 export 'tags_model.dart';
 export 'continents_model.dart';
+export 'line_item.dart';

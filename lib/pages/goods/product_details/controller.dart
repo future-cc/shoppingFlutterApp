@@ -283,6 +283,28 @@ class ProductDetailsController extends GetxController
   //   super.onInit();
   // }
 
+  // 加入购物车
+  void onAddCartTap() async {
+    // 检查是否登录
+    if (!await UserService.to.checkIsLogin()) {
+      return;
+    }
+
+    // 检查空
+    if (product == null || product?.id == null) {
+      Loading.error("product is empty");
+      return;
+    }
+
+    // 加入购物车
+    CartService.to.addCart(LineItem(
+      productId: productId,
+      product: product,
+    ));
+    // 返回、或者去购物车
+    Get.back();
+  }
+
   @override
   void onReady() {
     super.onReady();
@@ -299,5 +321,4 @@ class ProductDetailsController extends GetxController
     // 销毁 评论下拉控制器
     reviewsRefreshController.dispose();
   }
-
 }
