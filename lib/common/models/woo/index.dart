@@ -10,3 +10,4 @@ export 'review_model/index.dart';
 export 'tags_model.dart';
 export 'continents_model.dart';
 export 'line_item.dart';
+export 'coupons_model.dart';

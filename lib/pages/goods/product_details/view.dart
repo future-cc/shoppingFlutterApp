@@ -221,6 +221,59 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
         .paddingHorizontal(AppSpace.page);
   }
 
+  // 优惠券, 568935ab
+  Widget _buildCoupons() {
+    return <Widget>[
+      // 输入框
+      InputWidget(
+        placeholder: "Voucher Code",
+        // 输入优惠券代码
+        onChanged: (value) => controller.couponCode = value,
+      ).expanded(),
+
+      // 应用按钮
+      ButtonWidget.ghost(
+        LocaleKeys.gCartBtnApplyCode.tr,
+        onTap: controller.onApplyCoupon, // 应用事件
+      ),
+    ].toRow();
+  }
+
+  // 统计
+  Widget _buildTotal(BuildContext context) {
+    return <Widget>[
+      // 运费、代金券
+      <Widget>[
+        // 运费
+        TextWidget.label(
+            "${LocaleKeys.gCartTextShippingCost.tr}: \$${CartService.to.shipping}"),
+        // 代金券
+        TextWidget.label(
+            "${LocaleKeys.gCartTextVocher.tr}: \$${CartService.to.discount}"),
+      ]
+          .toColumn(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          )
+          .expanded(),
+
+      // 费用小计
+      TextWidget.label(
+              "${LocaleKeys.gCartTextTotal.tr}: \$${CartService.to.totalItemsPrice - CartService.to.discount + CartService.to.shipping}")
+          .paddingRight(AppSpace.iconTextMedium),
+
+      // 确认下单 checkout
+      ButtonWidget.primary(
+        LocaleKeys.gCartBtnCheckout.tr,
+        onTap: () {},
+        // borderRadius: 3.sp,
+      ),
+    ].toRow().paddingAll(AppSpace.card).decorated(
+          color: context.colors.scheme.secondary.withOpacity(0.1),
+          border: Border.all(color: context.colors.scheme.secondary, width: 1),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProductDetailsController>(

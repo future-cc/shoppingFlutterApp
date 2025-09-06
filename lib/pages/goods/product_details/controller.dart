@@ -12,6 +12,9 @@ class ProductDetailsController extends GetxController
     with GetSingleTickerProviderStateMixin {
   ProductDetailsController();
 
+  // 优惠券代码
+  String couponCode = '';
+
   // 主界面 刷新控制器
   final RefreshController mainRefreshController = RefreshController(
     initialRefresh: true,
@@ -77,6 +80,28 @@ class ProductDetailsController extends GetxController
     }
     update(["product_details"]);
   }
+
+  // 应用优惠券, 568935ab
+  Future<void> onApplyCoupon() async {
+    if (couponCode.isEmpty) {
+      Loading.error("Voucher code empty.");
+      return;
+    }
+    CouponsModel? coupon = await CouponApi.couponDetail(couponCode);
+    if (coupon != null) {
+      couponCode = "";
+      bool isSuccess = CartService.to.applyCoupon(coupon);
+      if (isSuccess) {
+        Loading.success("Coupon applied.");
+      } else {
+        Loading.error("Coupon is already applied.");
+      }
+      update(["cart_index"]);
+    } else {
+      Loading.error("Coupon code is not valid.");
+    }
+  }
+
 
   // 初始化数据
   _initData() async {
