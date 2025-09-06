@@ -1,0 +1,43 @@
+import 'package:get/get.dart';
+
+import '../../../common/index.dart';
+
+class BuyNowController extends GetxController {
+  BuyNowController({required this.product});
+
+  // 商品详情
+  final ProductModel product;
+
+  // 支付方式图标
+  List<String> paymentList = [
+    AssetsImages.pVisaPng,
+    AssetsImages.pCashPng,
+    AssetsImages.pMastercardPng,
+    AssetsImages.pPaypalPng,
+  ];
+
+  _initData() {
+    update(["buy_now"]);
+  }
+
+  // 下单 checkout
+  void onCheckout() async {}
+
+  void onTap() {}
+
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  // }
+
+  @override
+  void onReady() {
+    super.onReady();
+    _initData();
+  }
+
+  // @override
+  // void onClose() {
+  //   super.onClose();
+  // }
+}

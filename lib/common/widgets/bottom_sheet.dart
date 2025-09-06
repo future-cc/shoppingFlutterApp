@@ -86,8 +86,14 @@ class BottomSheetWidget extends StatefulWidget {
     void Function()? onCancel,
     EdgeInsets? minimum,
   }) {
+    //showModalBottomSheet 内部是通过 showBottomSheet 实现的
     return showModalBottomSheet<T>(
       context: context,
+      showDragHandle: false,
+      enableDrag: false,
+      elevation: elevation,
+      // transitionAnimationController:
+      backgroundColor: backgroundColor ?? context.colors.scheme.surface,
       barrierColor: const Color(0xFF09101D).withOpacity(0.7),
       builder: (BuildContext context) {
         return BottomSheetWidget(
@@ -191,18 +197,19 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget>
       );
     }
 
-    return BottomSheet(
-      onClosing: () {},
-      builder: (BuildContext context) {
-        return child.scrollable();
-      },
-      animationController: _animationController,
-      showDragHandle: false,
-      enableDrag: false,
-      // false 才有拖动效果
-      backgroundColor: widget.backgroundColor ?? context.colors.scheme.surface,
-      elevation: widget.elevation,
-    );
+    return child.scrollable();
+    // return BottomSheet(
+    //   onClosing: () {},
+    //   builder: (BuildContext context) {
+    //     return child.scrollable();
+    //   },
+    //   animationController: _animationController,
+    //   showDragHandle: false,
+    //   enableDrag: false,
+    //   // false 才有拖动效果
+    //   backgroundColor: widget.backgroundColor ?? context.colors.scheme.surface,
+    //   elevation: widget.elevation,
+    // );
   }
 
   @override
