@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/components/quantity.dart';
 import '../../../../common/index.dart';
 import '../index.dart';
 
@@ -10,6 +11,9 @@ import '../index.dart';
 class CartItem extends StatelessWidget {
   /// 订单数据
   final LineItem lineItem;
+
+  /// 修改数量事件
+  final Function(int)? onChangeQuantity;
 
   /// 是否全选
   final bool isSelected;
@@ -22,6 +26,7 @@ class CartItem extends StatelessWidget {
     required this.lineItem,
     required this.isSelected,
     required this.onSelect,
+    required this.onChangeQuantity,
   });
 
   // 主视图
@@ -80,6 +85,10 @@ class CartItem extends StatelessWidget {
           ).expanded(),
 
           // 数量
+          QuantityWidget(
+            quantity: lineItem.quantity ?? 0,
+            onChange: (quantity) => onChangeQuantity?.call(quantity),
+          ),
 
           // end
         ].toRow().paddingTop(AppSpace.listRow),
