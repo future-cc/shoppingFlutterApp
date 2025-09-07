@@ -168,6 +168,7 @@ class MyAddressController extends GetxController {
       }
       if (profile != null) {
         UserService.to.setProfile(profile);
+        // 可以返回的数据
         Get.back<bool>(result: true);
       }
     }
