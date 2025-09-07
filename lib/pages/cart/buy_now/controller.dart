@@ -5,6 +5,18 @@ import '../../../common/index.dart';
 class BuyNowController extends GetxController {
   BuyNowController({required this.product});
 
+  // 数量
+  int quantity = 1;
+
+  // 运费
+  double get shipping => 0;
+
+  // 折扣
+  double get discount => 0;
+
+  // 商品合计价格
+  double get totalPrice => double.parse(product.price!) * quantity;
+
   // 商品详情
   final ProductModel product;
 
@@ -48,6 +60,15 @@ class BuyNowController extends GetxController {
       shippingAddress = UserService.to.shipping;
       update(["buy_now"]);
     }
+  }
+
+  // 修改数量
+  void onQuantityChange(int value) {
+    if (value <= 0) {
+      value = 1;
+    }
+    quantity = value;
+    update(["buy_now"]);
   }
 
 // @override

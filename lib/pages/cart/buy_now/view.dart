@@ -1,6 +1,7 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:woo_shopping_flutter/pages/cart/buy_now/widgets/price_line.dart';
 
 import '../../../common/index.dart';
 import 'index.dart';
@@ -24,9 +25,14 @@ class BuyNowPage extends GetView<BuyNowController> {
 
       // 数量
       _buildTitle(LocaleKeys.placeOrderQuantity.tr),
+      QuantityWidget(
+        quantity: controller.quantity,
+        onChange: controller.onQuantityChange,
+      ).paddingBottom(AppSpace.listRow),
 
       // 小计
       _buildTitle(LocaleKeys.placeOrderPrice.tr),
+      _buildPrice(context),
 
       // 按钮
       _buildButtons(),
@@ -121,6 +127,43 @@ class BuyNowPage extends GetView<BuyNowController> {
         )
         .onTap(controller.onShippingTap)
         .paddingBottom(AppSpace.listRow);
+  }
+
+  // 小计
+  Widget _buildPrice(BuildContext context) {
+    return <Widget>[
+      // Shipping: $2.05
+      BuildPriceLine(
+        titleString: LocaleKeys.placeOrderPriceShipping.tr,
+        priceString: "\$${controller.shipping}",
+      ),
+
+      // Discount: $3.05
+      BuildPriceLine(
+        titleString: LocaleKeys.placeOrderPriceDiscount.tr,
+        priceString: "\$${controller.discount}",
+      ),
+
+      // Voucher Code:
+      BuildPriceLine(
+        titleString: LocaleKeys.placeOrderPriceVoucherCode.tr,
+        rightWidget: ButtonWidget.ghost(
+          LocaleKeys.placeOrderPriceVoucherCodeEnter.tr,
+          textColor: context.colors.scheme.secondary,
+          scale: WidgetScale.small,
+          // onTap: controller.onEnterCouponCode, // 输入优惠券码
+        ),
+      ),
+
+      // Total: $14.60
+      BuildPriceLine(
+        leftWidget: TextWidget.label(LocaleKeys.placeOrderTotal.tr),
+        rightWidget: TextWidget.label(
+            "\$${controller.totalPrice - controller.discount}"),
+      ),
+
+      //
+    ].toColumn();
   }
 
   @override
