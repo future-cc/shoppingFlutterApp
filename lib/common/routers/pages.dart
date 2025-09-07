@@ -86,5 +86,9 @@ class RoutePages {
       name: RouteNames.stylesCheckbox,
       page: () => const CheckboxPage(),
     ),
+    GetPage(
+      name: RouteNames.cartBuyDone,
+      page: () => const BuyDonePage(),
+    ),
   ];
 }

@@ -17,3 +17,4 @@ export 'search/search_filter/index.dart';
 export 'styles/list_tile/index.dart';
 export 'my/my_address/index.dart';
 export 'styles/checkbox/index.dart';
+export 'cart/buy_done/index.dart';

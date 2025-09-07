@@ -11,3 +11,4 @@ export 'tags_model.dart';
 export 'continents_model.dart';
 export 'line_item.dart';
 export 'coupons_model.dart';
+export 'order_model.dart';
