@@ -38,3 +38,34 @@ StadiumBorder	胶囊形边框（两端半圆）
 BeveledRectangleBorder	斜角矩形边框
 
 
+## Table
+没给单元格设置宽度，Table 会按照 列内容的最大宽度
+Table(
+    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+    columnWidths: const {
+        0: FixedColumnWidth(50.0),
+        2: FixedColumnWidth(100.0),
+        3: FixedColumnWidth(80.0),
+    },
+    border: TableBorder.all(), // 表格边框
+    children: [
+        TableRow(
+            decoration: BoxDecoration(color: Colors.blue[100]),
+            children: [
+                Text("姓名"),
+                Text("年龄"),
+                Text("性别"),
+            ],
+        ),
+        TableRow(
+            children: [
+                Text("张三"),
+                Text("20"),
+                Text("男"),
+            ],
+        ),
+    ]
+)
+
+
+
