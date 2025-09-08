@@ -30,3 +30,11 @@ LayoutBuilder = 根据父容器的约束，动态构建子 Widget。
 ## MediaQuery
 MediaQuery.of(context).size → 拿到的是 屏幕大小。
 LayoutBuilder → 拿到的是 当前父容器的约束（更精确，适合局部自适应布局）。
+
+## ShapeBorder
+RoundedRectangleBorder	圆角矩形（最常用）
+CircleBorder	圆形边框
+StadiumBorder	胶囊形边框（两端半圆）
+BeveledRectangleBorder	斜角矩形边框
+
+
