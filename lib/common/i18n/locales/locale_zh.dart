@@ -20,13 +20,13 @@ Map<String, String> localeZh = {
   // welcome 欢迎
   LocaleKeys.welcomeOneTitle: '选择您喜欢的产品',
   LocaleKeys.welcomeOneDesc:
-  'Contrary to popular belief, Lorem Ipsum is not simply random text',
+      'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeTwoTitle: '完成您的购物',
   LocaleKeys.welcomeTwoDesc:
-  'Contrary to popular belief, Lorem Ipsum is not simply random text',
+      'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeThreeTitle: '足不出户的购物体验',
   LocaleKeys.welcomeThreeDesc:
-  'Contrary to popular belief, Lorem Ipsum is not simply random text',
+      'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeSkip: '跳过',
   LocaleKeys.welcomeNext: '下一页',
   LocaleKeys.welcomeStart: '立刻开始',
@@ -162,5 +162,19 @@ Map<String, String> localeZh = {
   LocaleKeys.promoDesc: '促销代码只是印刷和排版行业的虚拟文本',
   LocaleKeys.promoEnterCodeTip: '输入代码',
 
+  // 订单页
+  LocaleKeys.orderListTitle: '订单列表',
+  LocaleKeys.orderDetailsTitle: '订单详情',
+  LocaleKeys.orderDetailsOrderID: '订单 ID',
+  LocaleKeys.orderDetailsBillFrom: '始发地',
+  LocaleKeys.orderDetailsBillTo: '目的地',
+  LocaleKeys.orderDetailsProduct: '商品',
+  LocaleKeys.orderDetailsRateQty: '单价 & 数量',
+  LocaleKeys.orderDetailsAmount: '小计',
+  LocaleKeys.orderDetailsPaymentMethod: '支付方式',
+  LocaleKeys.orderDetailsBalance: '结算',
+  LocaleKeys.orderDetailsTotal: '合计',
+  LocaleKeys.orderDetailsPaid: '支付',
+  LocaleKeys.orderDetailsShipping: '运费',
+  LocaleKeys.orderDetailsDiscount: '折扣',
 };
-

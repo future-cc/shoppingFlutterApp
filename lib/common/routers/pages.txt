@@ -60,6 +60,14 @@
         page: () => const MyIndexPage(),
       ),
       GetPage(
+        name: RouteNames.myOrderDetails,
+        page: () => const OrderDetailsPage(),
+      ),
+      GetPage(
+        name: RouteNames.myOrderList,
+        page: () => const OrderListPage(),
+      ),
+      GetPage(
         name: RouteNames.searchSearchFilter,
         page: () => const SearchFilterPage(),
       ),

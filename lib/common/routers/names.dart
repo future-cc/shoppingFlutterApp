@@ -17,4 +17,5 @@ class RouteNames {
   static const myMyAddress = '/my_my_address';
   static const stylesCheckbox = '/styles_checkbox';
   static const cartBuyDone = '/cart_buy_done';
+  static const myOrderDetails = '/my_order_details';
 }

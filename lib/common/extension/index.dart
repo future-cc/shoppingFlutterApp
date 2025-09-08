@@ -1,1 +1,1 @@
-// export './xxxx.dart';
+export 'ex_string.dart';

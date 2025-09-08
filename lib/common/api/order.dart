@@ -1,4 +1,5 @@
 import '../index.dart';
+import '../models/request/order.dart';
 
 // 订单
 class OrderApi {
@@ -29,5 +30,19 @@ class OrderApi {
       data: data,
     );
     return OrderModel.fromJson(res.data);
+  }
+
+  /// 订单列表
+  static Future<List<OrderModel>> orders(OrdersReq req) async {
+    var res = await WPHttpService.to.get(
+      '/orders',
+      params: req.toJson(),
+    );
+
+    List<OrderModel> orders = [];
+    for (var item in res.data) {
+      orders.add(OrderModel.fromJson(item));
+    }
+    return orders;
   }
 }

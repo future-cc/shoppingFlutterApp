@@ -12,3 +12,4 @@ export 'continents_model.dart';
 export 'line_item.dart';
 export 'coupons_model.dart';
 export 'order_model.dart';
+export 'shipping_line.dart';

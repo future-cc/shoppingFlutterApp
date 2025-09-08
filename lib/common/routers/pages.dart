@@ -90,5 +90,9 @@ class RoutePages {
       name: RouteNames.cartBuyDone,
       page: () => const BuyDonePage(),
     ),
+    GetPage(
+      name: RouteNames.myOrderDetails,
+      page: () => const OrderDetailsPage(),
+    ),
   ];
 }
