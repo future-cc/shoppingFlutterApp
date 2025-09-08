@@ -144,6 +144,7 @@ class StepVerticalItemWidget extends StatelessWidget {
             ),
           ]
               .toStack(
+                /// stack也可以设置那边居中
                 alignment: Alignment.center,
               )
               .width(30),
