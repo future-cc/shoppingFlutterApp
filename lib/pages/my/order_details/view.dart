@@ -6,6 +6,7 @@ import 'package:woo_shopping_flutter/pages/my/order_details/widgets/products_lis
 import '../../../common/index.dart';
 import 'index.dart';
 import 'widgets/bill_address.dart';
+import 'widgets/total_item.dart';
 
 class OrderDetailsPage extends GetView<OrderDetailsController> {
   const OrderDetailsPage({super.key});
@@ -185,8 +186,67 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
 
   // 小计
   Widget _buildTotal() {
-    return const Text("小计");
+    return <Widget>[
+      // 左侧
+      <Widget>[
+        // Payment Method
+        TextWidget.label(
+          LocaleKeys.orderDetailsPaymentMethod.tr,
+          weight: FontWeight.bold,
+        ),
+
+        // VISA Card Payment
+        const TextWidget.label("VISA Card Payment"),
+
+        // Balance 余额
+        BuildTotalItem(
+          title: LocaleKeys.orderDetailsBalance.tr,
+          currencySymbol: controller.order.currencySymbol,
+          price: "0",
+        ),
+      ]
+          .toColumn(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
+      )
+          .expanded(),
+
+      // 间距
+      SizedBox(
+        width: AppSpace.iconTextMedium,
+      ),
+
+      // 右侧
+      <Widget>[
+        // Total
+        BuildTotalItem(
+          title: LocaleKeys.orderDetailsTotal.tr,
+          currencySymbol: controller.order.currencySymbol,
+          price: controller.order.total,
+        ),
+
+        // Shipping
+        BuildTotalItem(
+          title: LocaleKeys.orderDetailsShipping.tr,
+          currencySymbol: controller.order.currencySymbol,
+          price: controller.order.shippingTotal,
+        ),
+
+        // Discount
+        BuildTotalItem(
+          title: LocaleKeys.orderDetailsDiscount.tr,
+          currencySymbol: controller.order.currencySymbol,
+          price: controller.order.discountTotal,
+        ),
+      ]
+          .toColumn(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      )
+          .expanded(),
+    ].toRow().height(100).paddingAll(AppSpace.card).card();
   }
+
+
 
   // 标题
   Widget _buildTitle() {
