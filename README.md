@@ -26,6 +26,48 @@ LayoutBuilder = 根据父容器的约束，动态构建子 Widget。
 适合做响应式布局 / 自适应布局。
 它不会渲染多余的东西，只是提供了一个拿父约束的入口。
 
+## 和 LayoutBuilder 类似的常用组件
+获取父约束 → LayoutBuilder
+获取屏幕方向 → OrientationBuilder
+依赖局部 BuildContext → Builder
+依赖局部状态 → StatefulBuilder
+依赖异步数据 → FutureBuilder、StreamBuilder
+依赖可监听值 → ValueListenableBuilder
+依赖动画 → AnimatedBuilder
+
+| 组件                         | 说明                                                                                 | 使用场景                                                         |
+| -------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| **Builder**                | 提供一个新的 `BuildContext`，用来在局部获取 `Theme.of`、`Scaffold.of` 等依赖最近 `InheritedWidget` 的数据 | 需要新的 `context`，比如在没有 `Scaffold` 的地方调用 `Scaffold.of(context)` |
+| **LayoutBuilder**          | 将父组件传下来的约束 `BoxConstraints` 暴露出来，让子组件根据约束动态构建 UI                                   | 根据容器大小调整布局，例如屏幕宽时用 `Row`，窄时用 `Column`                        |
+| **OrientationBuilder**     | 提供当前屏幕方向（横屏/竖屏）信息                                                                  | 横竖屏 UI 适配，比如竖屏单列、横屏双列                                        |
+| **StatefulBuilder**        | 在局部范围内提供 `setState` 方法，不需要整个页面变成 StatefulWidget                                    | 只想让某个小部件有独立状态，而不是把整个 Widget 拆成 StatefulWidget                |
+| **FutureBuilder**          | 监听一个 `Future<T>`，根据异步任务的执行状态（等待/成功/失败）构建 UI                                        | 异步加载数据，例如网络请求、数据库查询                                          |
+| **StreamBuilder**          | 监听一个 `Stream<T>`，每次有新数据时重建 Widget                                                  | 实时数据流，如聊天消息、Socket 推送、计时器                                    |
+| **ValueListenableBuilder** | 监听 `ValueNotifier<T>` 的值变化并更新 UI                                                   | 轻量状态管理，例如计数器、表单值变化                                           |
+| **AnimatedBuilder**        | 监听 `Animation` 或 `AnimationController`，在动画值变化时更新 UI                                | 旋转、缩放、渐变等自定义动画效果                                             |
+
+## ScaffoldMessenger
+统一管理 多个 Scaffold 的 SnackBar。
+即使换页面，SnackBar 也不会立刻消失（除非你手动移除）。
+可以在任意地方（只要有 context）安全地显示 SnackBar。
+```dart
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          behavior: SnackBarBehavior.floating,
+          content: Center(child: Text('Press again to exit the application.')),
+          duration: Duration(seconds: 4),
+        ),
+      );
+```
+
+Scaffold
+showSnackBar 只能在当前 Scaffold 里调用，如果换了页面或者路由，SnackBar 可能就显示不出来。
+如果当前 context 不在 Scaffold 的子树里，还会报错 "Scaffold.of() called with a context that does not contain a Scaffold."
+```dart
+Scaffold.of(context).showSnackBar(
+  SnackBar(content: Text("操作成功")),
+);
+```
 
 ## MediaQuery
 MediaQuery.of(context).size → 拿到的是 屏幕大小。
@@ -128,5 +170,9 @@ const EdgeInsets.symmetric(
   vertical: 4,
   horizontal: 8,
   );
+
+* TabBar + TabBarView 可以实现 TabBar 的联动切换
+PageView也可以做到
+注意：state with AutomaticKeepAliveClientMixin
 
 
