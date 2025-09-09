@@ -104,23 +104,23 @@ class AppTheme {
     statusBarBrightness: Brightness.light, // 状态栏亮度
     statusBarIconBrightness: Brightness.dark, // 状态栏图标亮度
     systemNavigationBarDividerColor: Colors.transparent, // 系统导航栏分隔线颜色
-    systemNavigationBarColor: Colors.white, // 系统导航栏颜色
-    systemNavigationBarIconBrightness: Brightness.dark, // 系统导航栏图标亮度
+    systemNavigationBarColor: Colors.white, // 底部系统导航栏颜色
+    systemNavigationBarIconBrightness: Brightness.dark, // 底部系统导航栏图标亮度
   );
 
   /// 亮色系统样式
   static SystemUiOverlayStyle get systemStyleLight => systemStyle.copyWith(
     statusBarBrightness: Brightness.light, // 状态栏亮度
     statusBarIconBrightness: Brightness.dark, // 状态栏图标亮度
-    systemNavigationBarIconBrightness: Brightness.dark, // 系统导航栏图标亮度
+    systemNavigationBarIconBrightness: Brightness.dark, // 底部系统导航栏图标亮度
   );
 
   /// 暗色系统样式
   static SystemUiOverlayStyle get systemStyleDark => systemStyle.copyWith(
     statusBarBrightness: Brightness.dark, // 状态栏亮度
     statusBarIconBrightness: Brightness.light, // 状态栏图标亮度
-    systemNavigationBarColor: const Color(0xFF0D0D0D), // 系统导航栏颜色
-    systemNavigationBarIconBrightness: Brightness.light, // 系统导航栏图标亮度
+    systemNavigationBarColor: const Color(0xFF0D0D0D), // 底部系统导航栏颜色
+    systemNavigationBarIconBrightness: Brightness.light, // 底部系统导航栏图标亮度
   );
 
   static void setSystemStyle() {
