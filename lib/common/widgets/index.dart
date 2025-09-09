@@ -9,3 +9,4 @@ export 'avatar.dart';
 export 'list_tile.dart';
 export 'bottom_sheet.dart';
 export 'checkbox.dart';
+export 'dialog.dart';
