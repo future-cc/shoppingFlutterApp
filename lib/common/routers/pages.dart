@@ -1,54 +1,26 @@
-import 'package:flutter/widgets.dart';
-import 'package:woo_shopping_flutter/pages/index.dart';
-
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:woo_shopping_flutter/pages/system/main/binding.dart';
-import 'index.dart';
+
+import '../../pages/index.dart';
+import '../index.dart';
 
 class RoutePages {
-  static final RouteObservers<Route> observer = RouteObservers();
-
-  // 历史记录
+  static final RouteObserver<Route> observer = RouteObservers();
   static List<String> history = [];
 
   // 列表
   static List<GetPage> list = [
-    GetPage(
-      name: RouteNames.stylesImage,
-      page: () => const ImagePage(),
-    ),
+    //////////////////////////////
+    // 系统
+    //////////////////////////////
     GetPage(
       name: RouteNames.systemLogin,
       page: () => const LoginPage(),
     ),
     GetPage(
-      name: RouteNames.systemSplash,
-      page: () => const SplashPage(),
-    ),
-    GetPage(
-      name: RouteNames.systemSplash,
-      page: () => const SplashPage(),
-    ),
-    GetPage(
-      name: RouteNames.stylesStylesIndex,
-      page: () => const StylesIndexPage(),
-    ),
-    GetPage(
-      name: RouteNames.stylesInput,
-      page: () => const InputPage(),
-    ),
-    GetPage(
-      name: RouteNames.systemWelcome,
-      page: () => const WelcomePage(),
-    ),
-    GetPage(
       name: RouteNames.systemMain,
       page: () => const MainPage(),
-      binding: MainBinding()
-    ),
-    GetPage(
-      name: RouteNames.stylesTextForm,
-      page: () => const TextFormPage(),
+      binding: MainBinding(),
     ),
     GetPage(
       name: RouteNames.systemRegister,
@@ -59,40 +31,180 @@ class RoutePages {
       page: () => const RegisterPinPage(),
     ),
     GetPage(
-      name: RouteNames.goodsProductDetails,
-      page: () => const ProductDetailsPage(),
+      name: RouteNames.systemSplash,
+      page: () => const SplashPage(),
     ),
+    GetPage(
+      name: RouteNames.systemUserAgreement,
+      page: () => const UserAgreementPage(),
+    ),
+    GetPage(
+      name: RouteNames.systemWelcome,
+      page: () => const WelcomePage(),
+    ),
+
+    //////////////////////////////
+    // 购物车
+    //////////////////////////////
+    // GetPage(
+    //   name: RouteNames.cartApplyPromoCode,
+    //   page: () => const ApplyPromoCodePage(),
+    // ),
+    GetPage(
+      name: RouteNames.cartBuyDone,
+      page: () => const BuyDonePage(),
+    ),
+    // GetPage(
+    //   name: RouteNames.cartBuyNow,
+    //   page: () => const BuyNowPage(),
+    // ),
+    GetPage(
+      name: RouteNames.cartCartIndex,
+      page: () => const CartIndexPage(),
+    ),
+
+    //////////////////////////////
+    // 商品
+    //////////////////////////////
     GetPage(
       name: RouteNames.goodsCategory,
       page: () => const CategoryPage(),
     ),
     GetPage(
-      name: RouteNames.searchSearchIndex,
-      page: () => const SearchIndexPage(),
+      name: RouteNames.goodsHome,
+      page: () => const HomePage(),
     ),
+    GetPage(
+      name: RouteNames.goodsProductDetails,
+      page: () => const ProductDetailsPage(),
+    ),
+    GetPage(
+      name: RouteNames.goodsProductList,
+      page: () => const ProductListPage(),
+    ),
+
+    //////////////////////////////
+    // 搜索
+    //////////////////////////////
     GetPage(
       name: RouteNames.searchSearchFilter,
       page: () => const SearchFilterPage(),
     ),
     GetPage(
-      name: RouteNames.stylesListTile,
-      page: () => const ListTilePage(),
+      name: RouteNames.searchSearchIndex,
+      page: () => const SearchIndexPage(),
+    ),
+
+    //////////////////////////////
+    // 我的
+    //////////////////////////////
+    GetPage(
+      name: RouteNames.myLanguage,
+      page: () => const LanguagePage(),
     ),
     GetPage(
       name: RouteNames.myMyAddress,
       page: () => const MyAddressPage(),
     ),
     GetPage(
-      name: RouteNames.stylesCheckbox,
-      page: () => const CheckboxPage(),
-    ),
-    GetPage(
-      name: RouteNames.cartBuyDone,
-      page: () => const BuyDonePage(),
+      name: RouteNames.myMyIndex,
+      page: () => const MyIndexPage(),
     ),
     GetPage(
       name: RouteNames.myOrderDetails,
       page: () => const OrderDetailsPage(),
+    ),
+    GetPage(
+      name: RouteNames.myOrderList,
+      page: () => const OrderListPage(),
+    ),
+    GetPage(
+      name: RouteNames.myProfileEdit,
+      page: () => const ProfileEditPage(),
+    ),
+    GetPage(
+      name: RouteNames.myTheme,
+      page: () => const ThemePage(),
+    ),
+
+    //////////////////////////////
+    // 样式
+    //////////////////////////////
+    GetPage(
+      name: RouteNames.stylesAppbar,
+      page: () => const AppbarPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesAvatar,
+      page: () => const AvatarPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesBottomSheet,
+      page: () => const BottomSheetPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesButton,
+      page: () => const ButtonPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesCard,
+      page: () => const CardPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesCheckbox,
+      page: () => const CheckboxPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesColors,
+      page: () => const ColorsPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesDialog,
+      page: () => const DialogPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesForm,
+      page: () => const FormPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesIcon,
+      page: () => const IconPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesImage,
+      page: () => const ImagePage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesInput,
+      page: () => const InputPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesListTile,
+      page: () => const ListTilePage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesPopover,
+      page: () => const PopoverPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesRadioGroup,
+      page: () => const RadioGroupPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesStylesIndex,
+      page: () => const StylesIndexPage(),
+    ),
+    GetPage(
+      name: RouteNames.stylesText,
+      page: () => const TextPage(),
+    ),
+
+    //////////////////////////////
+    // 消息
+    //////////////////////////////
+    GetPage(
+      name: RouteNames.msgMsgIndex,
+      page: () => const MsgIndexPage(),
     ),
   ];
 }

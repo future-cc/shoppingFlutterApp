@@ -11,43 +11,30 @@ import 'widgets/bar_item.dart';
 class MyIndexPage extends GetView<MyIndexController> {
   const MyIndexPage({super.key});
 
-  // 主视图
-  Widget _buildView(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        // 顶部 APP 导航栏
-        _buildAppBar(context),
+  // 列表项
+  Widget _buildListItem({
+    required String txtTitle,
+    required String svgPath,
+    Function()? onTap,
+  }) {
+    // 随机颜色
+    Color? iconColor;
+    iconColor = Colors.primaries[Random().nextInt(Colors.primaries.length)];
 
-        // My Order
-        _buildMyOrder(context).sliverBox,
-
-        // 按钮列表
-        _buildButtonsList(context).sliverBox,
-
-        // 注销
-        ButtonWidget.primary(
-          LocaleKeys.myBtnLogout.tr,
-          // height: 60,
-          // onTap: () => controller.onLogout(),
-        )
-            .padding(
-              left: AppSpace.page,
-              right: AppSpace.page,
-              bottom: AppSpace.listRow * 2,
-            )
-            .sliverBox,
-
-        // 版权
-        const TextWidget.label(
-          "Code by: https://ducafefcat.com",
-        ).alignCenter().paddingBottom(AppSpace.listRow).sliverBox,
-
-        // 版本号
-        TextWidget.label(
-          "v ${ConfigService.to.version}",
-        ).alignCenter().paddingBottom(200).sliverBox,
-      ],
-    );
+    // 列表项
+    return ListTileWidget(
+      title: TextWidget.label(txtTitle),
+      leading: IconWidget.svg(
+        svgPath,
+        size: 18,
+        color: Colors.white,
+      ).paddingAll(6).decorated(
+        color: iconColor,
+        borderRadius: BorderRadius.circular(30),
+      ),
+      trailing: const <Widget>[IconWidget.icon(Icons.arrow_forward_ios)],
+      onTap: onTap,
+    ).height(50);
   }
 
   // 顶部 APP 导航栏
@@ -65,7 +52,6 @@ class MyIndexPage extends GetView<MyIndexController> {
       stretch: true,
       // 高度
       expandedHeight: 280.h,
-      // collapsedHeight: 100.h,
       // 此小组件堆叠在工具栏和选项卡栏后面。其高度将与应用栏的整体高度相同。
       flexibleSpace: FlexibleSpaceBar(
         // // // 折叠模式
@@ -138,15 +124,15 @@ class MyIndexPage extends GetView<MyIndexController> {
               ),
             ]
                 .toRow(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                )
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            )
                 .paddingSymmetric(
-                  horizontal: AppSpace.card,
-                  vertical: AppSpace.card * 2,
-                )
+              horizontal: AppSpace.card,
+              vertical: AppSpace.card * 2,
+            )
                 .card(
-                  color: context.colors.scheme.surface,
-                )
+              color: context.colors.scheme.surface,
+            )
                 .paddingHorizontal(AppSpace.page),
           ].toColumn(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -161,7 +147,7 @@ class MyIndexPage extends GetView<MyIndexController> {
     return _buildListItem(
       txtTitle: LocaleKeys.myBtnMyOrder.tr,
       svgPath: AssetsSvgs.pDeliverySvg,
-      onTap: null, //() => Get.toNamed(RouteNames.myOrderList),
+      onTap: () => Get.toNamed(RouteNames.myOrderList),
     ).card().paddingVertical(AppSpace.page);
   }
 
@@ -172,42 +158,7 @@ class MyIndexPage extends GetView<MyIndexController> {
       _buildListItem(
         txtTitle: LocaleKeys.myBtnEditProfile.tr,
         svgPath: AssetsSvgs.pCurrencySvg,
-        onTap: null, //() => Get.toNamed(RouteNames.myProfileEdit),
-      ),
-
-      // Billing Address
-      _buildListItem(
-        txtTitle: LocaleKeys.myBtnBillingAddress.tr,
-        svgPath: AssetsSvgs.pHomeSvg,
-        onTap: null, //() => Get.toNamed(RouteNames.myProfileEdit),
-      ),
-
-      // Billing Address
-      _buildListItem(
-        txtTitle: LocaleKeys.myBtnShippingAddress.tr,
-        svgPath: AssetsSvgs.pHomeSvg,
-        onTap: null, //() => Get.toNamed(RouteNames.myProfileEdit),
-      ),
-
-      // Language
-      _buildListItem(
-        txtTitle: LocaleKeys.myBtnLanguage.tr,
-        svgPath: AssetsSvgs.pTranslateSvg,
-        onTap: null, //() => Get.toNamed(RouteNames.myLanguage),
-      ),
-
-      // 样式页
-      _buildListItem(
-        txtTitle: LocaleKeys.myBtnStyles.tr,
-        svgPath: AssetsSvgs.cBagSvg,
-        onTap: null, //() => Get.toNamed(RouteNames.stylesStylesIndex),
-      ),
-
-      // Theme
-      _buildListItem(
-        txtTitle: LocaleKeys.myBtnTheme.tr,
-        svgPath: AssetsSvgs.pThemeSvg,
-        onTap: null, //() => ConfigService.to.switchThemeMode(),
+        onTap: () => Get.toNamed(RouteNames.myProfileEdit),
       ),
 
       // Billing Address
@@ -224,6 +175,27 @@ class MyIndexPage extends GetView<MyIndexController> {
         onTap: () => controller.onToAddress("Shipping"), // 类型 shipping
       ),
 
+      // Language
+      _buildListItem(
+        txtTitle: LocaleKeys.myBtnLanguage.tr,
+        svgPath: AssetsSvgs.pTranslateSvg,
+        onTap: () => Get.toNamed(RouteNames.myLanguage),
+      ),
+
+      // 样式页
+      _buildListItem(
+        txtTitle: LocaleKeys.myBtnStyles.tr,
+        svgPath: AssetsSvgs.cBagSvg,
+        onTap: () => Get.toNamed(RouteNames.stylesStylesIndex),
+      ),
+
+      // Theme
+      _buildListItem(
+        txtTitle: LocaleKeys.myBtnTheme.tr,
+        svgPath: AssetsSvgs.pThemeSvg,
+        onTap: () => ConfigService.to.switchThemeMode(),
+      ),
+
       // 调试工具
       _buildListItem(
         txtTitle: LocaleKeys.myBtnStyles.tr,
@@ -233,30 +205,43 @@ class MyIndexPage extends GetView<MyIndexController> {
     ].toColumn().card().paddingVertical(AppSpace.page);
   }
 
-  // 列表项
-  Widget _buildListItem({
-    required String txtTitle,
-    required String svgPath,
-    Function()? onTap,
-  }) {
-    // 随机颜色
-    Color? iconColor;
-    iconColor = Colors.primaries[Random().nextInt(Colors.primaries.length)];
+  // 主视图
+  Widget _buildView(BuildContext context) {
+    return CustomScrollView(
+      slivers: <Widget>[
+        // 顶部 APP 导航栏
+        _buildAppBar(context),
 
-    // 列表项
-    return ListTileWidget(
-      title: TextWidget.label(txtTitle),
-      leading: IconWidget.svg(
-        svgPath,
-        size: 18,
-        color: Colors.white,
-      ).paddingAll(6).decorated(
-            color: iconColor,
-            borderRadius: BorderRadius.circular(30),
-          ),
-      trailing: const <Widget>[IconWidget.icon(Icons.arrow_forward_ios)],
-      onTap: onTap,
-    ).height(50);
+        // My Order
+        _buildMyOrder(context).sliverBox,
+
+        // 按钮列表
+        _buildButtonsList(context).sliverBox,
+
+        // 注销
+        ButtonWidget.primary(
+          LocaleKeys.myBtnLogout.tr,
+          // height: 60,
+          onTap: () => controller.onLogout(),
+        )
+            .padding(
+          left: AppSpace.page,
+          right: AppSpace.page,
+          bottom: AppSpace.listRow * 2,
+        )
+            .sliverBox,
+
+        // 版权
+        const TextWidget.label(
+          "Code by: https://ducafefcat.com",
+        ).alignCenter().paddingBottom(AppSpace.listRow).sliverBox,
+
+        // 版本号
+        TextWidget.label(
+          "v ${ConfigService.to.version}",
+        ).alignCenter().paddingBottom(200).sliverBox,
+      ],
+    );
   }
 
   @override

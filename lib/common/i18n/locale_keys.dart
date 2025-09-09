@@ -189,4 +189,7 @@ class LocaleKeys {
   static const profileEditConfirmPassword = "profile_edit_confirm_password";
   static const profileEditPasswordTip = "profile_edit_password_tip";
 
+  // 商品 - 列表
+  static const gFlashSellTitle = "goods_flash_sell_title";
+  static const gNewsTitle = "goods_news_title";
 }

@@ -10,34 +10,6 @@ import 'index.dart';
 class ProfileEditPage extends GetView<ProfileEditController> {
   const ProfileEditPage({super.key});
 
-  // 主视图
-  Widget _buildView(BuildContext context) {
-    return SingleChildScrollView(
-      child: <Widget>[
-        // 头像
-        _buildAvatar(context),
-
-        // 表单
-        Form(
-          key: controller.formKey, //设置globalKey，用于后面获取FormState
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          child: <Widget>[
-            // profile 表单
-            _buildProfileForm(context),
-            // password 表单
-            _buildPasswordForm(context),
-          ].toColumn(),
-        ).paddingBottom(AppSpace.card),
-
-        // 保存按钮
-        ButtonWidget.primary(
-          LocaleKeys.commonBottomSave.tr,
-          onTap: controller.onSave,
-        ).width(double.infinity),
-      ].toColumn().paddingVertical(AppSpace.card),
-    );
-  }
-
   // 头像
   Widget _buildAvatar(BuildContext context) {
     return ListTileWidget(
@@ -45,30 +17,31 @@ class ProfileEditPage extends GetView<ProfileEditController> {
       trailing: [
         controller.userPhoto != null
             ? AssetEntityImage(
-                controller.userPhoto!,
-                width: 50.w,
-                height: 50.w,
-                fit: BoxFit.cover,
-              ).clipOval()
+          controller.userPhoto!,
+          width: 50.w,
+          height: 50.w,
+          fit: BoxFit.cover,
+        ).clipOval()
             : ImageWidget.img(
-                // UserService.to.profile.avatarUrl,
-                "https://ducafecat-pub.oss-cn-qingdao.aliyuncs.com/avatar/00258VC3ly1gty0r05zh2j60ut0u0tce02.jpg",
-                width: 50.w,
-                height: 50.w,
-                fit: BoxFit.cover,
-                radius: 25.w,
-              ),
+          // UserService.to.profile.avatarUrl,
+          "https://ducafecat-pub.oss-cn-qingdao.aliyuncs.com/avatar/00258VC3ly1gty0r05zh2j60ut0u0tce02.jpg",
+          width: 50.w,
+          height: 50.w,
+          fit: BoxFit.cover,
+          radius: 25.w,
+        ),
       ],
       padding: EdgeInsets.all(AppSpace.card),
       onTap: controller.onSelectPhoto,
     )
         .card(
-          color: context.colors.scheme.surface,
-          margin: EdgeInsets.zero,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.zero,
-          ),
-        )
+      color: context.colors.scheme.surface,
+      margin: EdgeInsets.zero,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+      ),
+      elevation: 0.1,
+    )
         .paddingBottom(AppSpace.card);
   }
 
@@ -116,13 +89,13 @@ class ProfileEditPage extends GetView<ProfileEditController> {
         .toColumn()
         .paddingAll(AppSpace.card)
         .card(
-          color: context.colors.scheme.surface,
-          margin: EdgeInsets.zero,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.zero,
-          ),
-          elevation: 0.1,
-        )
+      color: context.colors.scheme.surface,
+      margin: EdgeInsets.zero,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+      ),
+      elevation: 0.1,
+    )
         .paddingBottom(AppSpace.card);
   }
 
@@ -176,13 +149,41 @@ class ProfileEditPage extends GetView<ProfileEditController> {
 
       // end
     ].toColumn().paddingAll(AppSpace.card).card(
-          color: context.colors.scheme.surface,
-          margin: EdgeInsets.zero,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.zero,
-          ),
-          elevation: 0.1,
-        );
+      color: context.colors.scheme.surface,
+      margin: EdgeInsets.zero,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+      ),
+      elevation: 0.1,
+    );
+  }
+
+  // 主视图
+  Widget _buildView(BuildContext context) {
+    return SingleChildScrollView(
+      child: <Widget>[
+        // 头像
+        _buildAvatar(context),
+
+        // 表单
+        Form(
+          key: controller.formKey, //设置globalKey，用于后面获取FormState
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          child: <Widget>[
+            // profile 表单
+            _buildProfileForm(context),
+            // password 表单
+            _buildPasswordForm(context),
+          ].toColumn(),
+        ).paddingBottom(AppSpace.card),
+
+        // 保存按钮
+        ButtonWidget.primary(
+          LocaleKeys.commonBottomSave.tr,
+          onTap: controller.onSave,
+        ).width(double.infinity),
+      ].toColumn().paddingVertical(AppSpace.card),
+    );
   }
 
   @override

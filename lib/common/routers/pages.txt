@@ -40,6 +40,10 @@
         page: () => const WidgetsPage(),
       ),
       GetPage(
+        name: RouteNames.goodsProductList,
+        page: () => const ProductListPage(),
+      ),
+      GetPage(
         name: RouteNames.msg,
         page: () => const MsgPage(),
       ),
@@ -68,6 +72,18 @@
         page: () => const OrderListPage(),
       ),
       GetPage(
+        name: RouteNames.myOrderListWidgets,
+        page: () => const WidgetsPage(),
+      ),
+      GetPage(
+        name: RouteNames.myProfileEdit,
+        page: () => const ProfileEditPage(),
+      ),
+      GetPage(
+        name: RouteNames.myTheme,
+        page: () => const ThemePage(),
+      ),
+      GetPage(
         name: RouteNames.searchSearchFilter,
         page: () => const SearchFilterPage(),
       ),
@@ -76,8 +92,44 @@
         page: () => const SearchIndexPage(),
       ),
       GetPage(
+        name: RouteNames.stylesAppbar,
+        page: () => const AppbarPage(),
+      ),
+      GetPage(
+        name: RouteNames.stylesAvatar,
+        page: () => const AvatarPage(),
+      ),
+      GetPage(
+        name: RouteNames.stylesBottomSheet,
+        page: () => const BottomSheetPage(),
+      ),
+      GetPage(
+        name: RouteNames.stylesButton,
+        page: () => const ButtonPage(),
+      ),
+      GetPage(
+        name: RouteNames.stylesCard,
+        page: () => const CardPage(),
+      ),
+      GetPage(
         name: RouteNames.stylesCheckbox,
         page: () => const CheckboxPage(),
+      ),
+      GetPage(
+        name: RouteNames.stylesColors,
+        page: () => const ColorsPage(),
+      ),
+      GetPage(
+        name: RouteNames.stylesDialog,
+        page: () => const DialogPage(),
+      ),
+      GetPage(
+        name: RouteNames.stylesForm,
+        page: () => const FormPage(),
+      ),
+      GetPage(
+        name: RouteNames.stylesIcon,
+        page: () => const IconPage(),
       ),
       GetPage(
         name: RouteNames.stylesImage,
@@ -88,12 +140,28 @@
         page: () => const InputPage(),
       ),
       GetPage(
+        name: RouteNames.stylesLanguage,
+        page: () => const LanguagePage(),
+      ),
+      GetPage(
         name: RouteNames.stylesListTile,
         page: () => const ListTilePage(),
       ),
       GetPage(
+        name: RouteNames.stylesPopover,
+        page: () => const PopoverPage(),
+      ),
+      GetPage(
+        name: RouteNames.stylesRadioGroup,
+        page: () => const RadioGroupPage(),
+      ),
+      GetPage(
         name: RouteNames.stylesStylesIndex,
         page: () => const StylesIndexPage(),
+      ),
+      GetPage(
+        name: RouteNames.stylesText,
+        page: () => const TextPage(),
       ),
       GetPage(
         name: RouteNames.stylesTextForm,
