@@ -69,6 +69,9 @@ Scaffold.of(context).showSnackBar(
 );
 ```
 
+## Form
+Form
+
 ## MediaQuery
 MediaQuery.of(context).size → 拿到的是 屏幕大小。
 LayoutBuilder → 拿到的是 当前父容器的约束（更精确，适合局部自适应布局）。
@@ -145,6 +148,27 @@ AppBar(
   systemOverlayStyle: SystemUiOverlayStyle.light, ///设置单个页面的状态栏和导航栏
 )
 ```
+
+## Isolate
+| 特性    | Future              | Isolate                     |
+| ----- | ------------------- | --------------------------- |
+| 概念    | 异步编程抽象              | Dart 的并发执行单元（线程）            |
+| 内存    | 共享同一个内存（当前 Isolate） | 独立内存，不共享                    |
+| 性能    | IO 密集型任务合适          | CPU 密集型任务合适                 |
+| UI 卡顿 | CPU 任务会卡 UI         | 不会卡 UI                      |
+| 通信    | 直接访问变量/对象           | 只能用消息（SendPort/ReceivePort） |
+
+📌 Isolate
+本质：Dart 的 多线程模型，每个 Isolate 都有独立的内存堆和事件循环。
+运行位置：和主 Isolate 完全隔离，只能通过 消息传递（SendPort/ReceivePort）通信。
+作用：适合 CPU 密集型任务，不会卡住主线程。
+
+适用场景：
+大量 JSON 解析
+图片处理
+加密/解压缩
+复杂计算
+
 
 # 补充知识
 *  Flutter 启动流程简化版
